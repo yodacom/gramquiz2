@@ -34,6 +34,7 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
+const wordController = require('./controllers/word');
 
 /**
  * API keys and Passport configuration.
@@ -86,11 +87,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use((req, res, next) => {
-  if (req.path === '/api/upload') {
-    next();
-  } else {
-    lusca.csrf()(req, res, next);
-  }
+  next();
+  // if (req.path === '/api/upload') {
+  //   next();
+  // } else {
+  //   lusca.csrf()(req, res, next);
+  // }
 });
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
@@ -167,6 +169,12 @@ app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
 app.get('/api/pinterest', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getPinterest);
 app.post('/api/pinterest', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.postPinterest);
 app.get('/api/google-maps', apiController.getGoogleMaps);
+
+/**
+ * Quiz Routes
+ */
+app.get('/quiz/word', wordController.getWords);
+app.post('/quiz/word', wordController.postWord);
 
 /**
  * OAuth authentication routes. (Sign in)
