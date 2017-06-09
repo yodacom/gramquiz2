@@ -18,6 +18,13 @@ const userSchema = new mongoose.Schema({
   tokens: Array,
 
   profile: {
+// Profile to use with quiz app
+  firstName: String,
+  lastName: String,
+  nickname: { type: String, unique: true},
+  personalityType: String,
+// End Profile for quiz app
+
     name: String,
     gender: String,
     location: String,
