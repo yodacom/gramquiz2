@@ -7,9 +7,8 @@ exports.getWords = (req, res) => {
 
 
 exports.postWord = (req, res) => {
-    let word = req.body;
+  const word = req.body;
     // validation
 
-    Word.create(word, (err, word) => res.json(word));
-
+  Word.create(word, (err, word) => res.json(word));
 };
