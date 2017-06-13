@@ -1,23 +1,46 @@
-extends layout
-
+extends ../layout2
 block content
   h1 Enneagram Word Quiz
-  p.lead Begin Here to Discover your Enneagram Profile
-  hr
-  .row
-    .col-sm-8
-      h2 Click on words that descibe you most the time
-      p To begin this journey of discovery you can use to this word quiz to gain initial insight into your one of 9 profiles.  This is just a start but will give you some indications of where you land within the Enneagram.
+  header
+    .headerBox
+      h2
+      
       p
-        a.btn.btn-default(href='#', role='button') Take Quiz Now »
-    .col-sm-4
-      h2 Most Like Me Word List
-      p Descriptive of me most over time
-      p
-        
-    .col-sm-12
-      h2 Results
-      p a.btn.btn-default(href='#', role='button') Get Results »
-      p This is just preliminary...explore more here and read further to refine and understand your profile more deeply.
-      p
-        
+        | Choose and click on words that 
+        span.emphasis best 
+        | describes you over time, not just right now,
+        |         but most of the time. Words that you don't choose are words that would NOT best describe "you" most of the time.
+        |         When finished selecting words that are you then press the "ANALYSIS" button.
+    main
+      .row.words
+        section.contentBox
+          #chooseWordBox.chooseWordBox
+            .boxTopLabel
+              | Choose word by clicking on the words that best descibe you
+            hr.hr2
+            .wordlist
+        section.contentBox
+          #answerListBox.answerListBox
+            .boxTopLabel
+              | List of words that "best" describe me
+            br
+            hr.hr2
+            .bestWords
+      .row.actions
+        section.button-container
+          p
+            a#btnNext.btn.btn-red(href='#') NEXT
+      .row.reports
+        section.personalityReport
+        section.refreshPage
+          section.button-container
+            p
+              a#ref_btn.btn.btn-red.refreshBtn(href='#') Retake Quiz
+    footer.footer
+      a(href='http://aktheos.com') Find out more about your typology here
+      br
+      small © Copyright 2016 by YodaCom LLC. All Rights Reserved.
+    script(src='js/keywordsArray.js')
+    script(src='/js/lib/jquery-3.1.1.min.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/main.js')

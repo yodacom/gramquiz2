@@ -35,6 +35,7 @@ const userController = require("./controllers/user");
 const apiController = require("./controllers/api");
 const contactController = require("./controllers/contact");
 const wordController = require("./controllers/word");
+const quizController = require("./controllers/quiz");
 
 /**
  * API keys and Passport configuration.
@@ -256,7 +257,7 @@ app.get("/api/google-maps", apiController.getGoogleMaps);
  */
 app.get("/quiz/word", wordController.getWords);
 app.post("/quiz/word", wordController.postWord);
-// app.get("/quiz/word", quizController.getwords);
+app.get("/quiz", quizController.getQuiz);
 
 /**
  * OAuth authentication routes. (Sign in)

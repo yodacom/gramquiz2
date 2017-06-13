@@ -1,0 +1,255 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 20;
+  padding-bottom: 6rem;
+  padding: 60px;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+}
+
+.boxTopLabel {
+  text-decoration-style: gray;
+  color:#E48681;
+  font-size: 20px;
+  font-weight: bolder;
+  
+}
+
+main {
+  margin: 0 auto;
+  padding-top: 10px;
+  max-width: 640px;
+  width: 94%;
+  border: 1px solid blue;
+  display:flex;
+  flex-basis: 600px;
+  flex-direction: column;
+}
+
+.hr2{
+	  border-top: 3px double #8c8b8b;
+}
+
+.row{
+    flex-shrink:1;
+    display:flex;
+    flex-direction: row;
+}
+
+.words{
+    flex-grow:2;
+}
+
+.actions{
+    flex-grow:1;
+}
+
+.wordlist {
+    margin-top: 20px;
+}
+
+.bestWords {
+  margin-top: 20px;
+}
+
+.contentBox {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+    flex: 1;
+    width:50%;
+    display:flex;
+    flex-direction: column;
+    min-height:400px;
+}
+.headerBox {
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+  /*border: 1px solid green;*/
+}
+
+.answerListBox {
+  text-align: center;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid gray;
+  margin-bottom: 20px;
+  flex:1;
+}
+
+.chooseWordBox {
+  text-align: center;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid gray;
+  margin-bottom: 20px;
+  flex:1;
+}
+
+.contentBoxDescription {
+  text-align: justify;
+  padding:10px;
+}
+
+.personalityReport {
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;
+
+}
+
+.emphasis {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+  }
+
+  .word {
+    font-family: inherit;
+    font-style: italic;
+    color: inherit;
+    display:block;
+    cursor: pointer;
+ }
+
+  .word:hover {
+    border: 1px solid yellow;
+    background-color: yellow;
+  }
+
+  li:hover {
+    border: 1px solid yellow;
+    background-color:yellow;
+  }
+
+  ul {
+    list-style: square;
+  }
+
+/* BUTTONS CODE */
+/*
+.refreshBtn, #ref_btn {
+  display: none;
+}
+*/
+
+.reports {
+    display: none;
+}
+
+.refreshPage {
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;  
+}
+
+.button-container p {
+  margin-top: 10px;
+}
+
+a { text-decoration: none;
+   margin: 0 10px;
+  }
+
+.button-container {
+	min-height: 50px;
+	margin-top: 50px;
+	width: 100%;
+	text-align: center;
+}
+
+a.btn {
+	display: inline-block;
+	color: #666;
+	background-color: #eee;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 12px;
+	padding: 10px 30px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.3);
+	border-bottom-width: 3px;
+}
+
+	a.btn:hover {
+		background-color: #e3e3e3;
+		border-color: rgba(0,0,0,0.5);
+	}
+
+	a.btn:active {
+		background-color: #CCC;
+		border-color: rgba(0,0,0,0.9);
+	}
+
+/* red button */
+
+a.btn.btn-red {
+	background-color: #E48681;
+	border-color: rgba(0,0,0,0.3);
+	text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+	color: #FFF;
+}
+
+	a.btn.btn-red:hover {
+		background-color: #DA4F49;
+		border-color: rgba(0,0,0,0.5);
+	}
+
+	a.btn.btn-red:active {
+		background-color: #B32C24;
+		border-color: rgba(0,0,0,0.9);
+	}
+
+  /* Animate */
+
+  .ui-state-highlight {
+    border: 1px solid yellow;
+    background-color:yellow;
+}
+
+/* a LINKS CODE */
+
+a:link {
+    color: blue;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+a:hover {
+    color: red;
+}
+
+/* selected link */
+a:active {
+    color: yellow;
+}

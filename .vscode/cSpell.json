@@ -25,7 +25,9 @@
         "shhhhhhh",
         "csrf",
         "lusca",
-        "SAMEORIGIN"
+        "SAMEORIGIN",
+        "Enneagram",
+        "pageview"
     ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.
