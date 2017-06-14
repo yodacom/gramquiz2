@@ -62,6 +62,13 @@ mongoose.connection.on("error", err => {
 });
 
 /**
+ * Populate the Mongo Database with initial data
+ * TODO: Make this dependant on the dev environment
+ */
+const db = require('./util/db');
+db();
+
+/**
  * Express configuration.
  */
 app.set("port", process.env.PORT || 3000);
