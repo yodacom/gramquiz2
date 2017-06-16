@@ -21,7 +21,7 @@ function displayWordGroup(keywords) {
 
 function moveWord(elem) {
     const word = $(this).text();
-    $(this).detach().appendTo('#answerListBox .bestWords');
+    $(this).detach().prependTo('#answerListBox .bestWords');
     const index = currentWords.findIndex((w) => w.word == word);
     //person.addWord(currentWords[index]);
     //TODO: Send this word choice to the server
