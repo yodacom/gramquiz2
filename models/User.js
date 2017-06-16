@@ -17,20 +17,12 @@ const userSchema = new mongoose.Schema({
   steam: String,
   tokens: Array,
 
-  profile: {
-// Profile to use with quiz app
-  firstName: String,
-  lastName: String,
-  nickname: { type: String, unique: true},
-  personalityType: String,
-// End Profile for quiz app
+  name: String,
+  gender: String,
+  location: String,
+  website: String,
+  picture: String
 
-    name: String,
-    gender: String,
-    location: String,
-    website: String,
-    picture: String
-  }
 }, { timestamps: true });
 
 /**
@@ -38,11 +30,17 @@ const userSchema = new mongoose.Schema({
  */
 userSchema.pre('save', function save(next) {
   const user = this;
-  if (!user.isModified('password')) { return next(); }
+  if (!user.isModified('password')) {
+    return next();
+  }
   bcrypt.genSalt(10, (err, salt) => {
-    if (err) { return next(err); }
+    if (err) {
+      return next(err);
+    }
     bcrypt.hash(user.password, salt, null, (err, hash) => {
-      if (err) { return next(err); }
+      if (err) {
+        return next(err);
+      }
       user.password = hash;
       next();
     });

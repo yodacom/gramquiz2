@@ -1,20 +1,21 @@
 doctype html
 html
   head
-    include partials/head1
-
+    include head2
+  
   body
-    include partials/header
+    include ../partials/header
 
     .container
-      include partials/flash
+      include ../partials/flash
       block content
 
-    include partials/footer
+    //- include ../partials/footer
 
     script(src='/js/lib/jquery-3.1.1.min.js')
     script(src='/js/lib/bootstrap.min.js')
     script(src='/js/main.js')
+   
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.
