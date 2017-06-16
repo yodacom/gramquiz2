@@ -264,6 +264,7 @@ app.get("/api/google-maps", apiController.getGoogleMaps);
  */
 app.get("/quiz/word", wordController.getWords);
 app.post("/quiz/word", wordController.postWord);
+app.put("/quiz/word", wordController.updateWord);
 app.get("/quiz", quizController.getQuiz);
 
 /**
