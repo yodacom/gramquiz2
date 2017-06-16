@@ -17,12 +17,6 @@ const userSchema = new mongoose.Schema({
   steam: String,
   tokens: Array,
 
-    // Quiz Profile Properties
-  firstName: String,
-  lastName: String,
-  nickname: { type: String, unique: true },
-  personalityType: String,
-    // End Profile for quiz app
   name: String,
   gender: String,
   location: String,
