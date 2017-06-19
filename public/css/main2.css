@@ -90,7 +90,7 @@ main {
   border: 1px solid gray;
   margin-bottom: 20px;
   flex:1;
-  max-height: 470px;
+  max-height: 350px;
   overflow-y: auto;
 }
 
