@@ -66,7 +66,9 @@ mongoose.connection.on("error", err => {
  * TODO: Make this dependant on the dev environment
  */
 const db = require('./util/db');
+console.log('Pre populate the database');
 db();
+console.log('Done prepopulating the database');
 
 /**
  * Express configuration.
