@@ -262,14 +262,6 @@ app.post(
 app.get("/api/google-maps", apiController.getGoogleMaps);
 
 /**
- * Quiz Routes
- */
-app.get("/quiz/word", wordController.getWords);
-app.post("/quiz/word", wordController.postWord);
-app.put("/quiz/word", wordController.updateWord);
-app.get("/quiz", quizController.getQuiz);
-
-/**
  * OAuth authentication routes. (Sign in)
  */
 app.get("/auth/instagram", passport.authenticate("instagram"));
@@ -368,6 +360,19 @@ app.get(
     res.redirect("/api/pinterest");
   }
 );
+
+/**
+ * QUIZ ROUTES ================
+ */
+
+app.get("/quiz/word", wordController.getWords);
+app.post("/quiz/word", wordController.postWord);
+app.put("/quiz/word", wordController.updateWord);
+app.get("/quiz", quizController.getQuiz);
+
+/**
+ *  End QUIZ ROUTES ===============
+ */
 
 /**
  * Error Handler.
