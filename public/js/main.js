@@ -24,7 +24,16 @@ function moveWord(elem) {
     $(this).detach().prependTo('#answerListBox .bestWords');
     const index = currentWords.findIndex((w) => w.word == word);
     //person.addWord(currentWords[index]);
-    //TODO: Send this word choice to the server
+    $.ajax({
+        method:'PUT',
+        url: 'http://localhost:3000/quiz/bestword',
+        data: {
+            word:word
+        }
+    })
+    .done(function(res){
+       console.log(res.message);
+    });
     currentWords.splice(index, 1);
 }
 
