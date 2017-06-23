@@ -370,6 +370,7 @@ app.post("/quiz/word", wordController.postWord);
 app.put("/quiz/word", wordController.updateWord);
 app.get("/quiz", quizController.getQuiz);
 app.put("/quiz/bestword", quizController.addBestWord);
+app.post("/quiz", quizController.createQuiz);
 
 /**
  *  End QUIZ ROUTES ===============
