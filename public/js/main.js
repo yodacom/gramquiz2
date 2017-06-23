@@ -1,3 +1,5 @@
+var quiz;
+
 function displayWordGroup(keywords) {
     if (keywords.length == 0) {
         $('.wordlist').append('<h3> End of list Press the Analysis button to see your profile </h4>');
@@ -12,7 +14,7 @@ function displayWordGroup(keywords) {
             const word = keywords[rnd];
             currentWords.push(word);
             keywords.splice(rnd, 1);
-            $('.wordlist').append(`<span class='word'>${word.word}</span>`);
+            $('.wordlist').append(`<span class='word' data-id='${word._id}'>${word.word}</span>`);
         }
 
         console.log(currentWords);
@@ -21,6 +23,7 @@ function displayWordGroup(keywords) {
 
 function moveWord(elem) {
     const word = $(this).text();
+    const word_id = $(this).data("id");
     $(this).detach().prependTo('#answerListBox .bestWords');
     const index = currentWords.findIndex((w) => w.word == word);
     //person.addWord(currentWords[index]);
@@ -28,7 +31,9 @@ function moveWord(elem) {
         method:'PUT',
         url: 'http://localhost:3000/quiz/bestword',
         data: {
-            word:word
+            word:word,
+            id:word_id,
+            quiz:quiz._id
         }
     })
     .done(function(res){
@@ -66,6 +71,14 @@ $(document).ready(function() {
           keywords = data;
           displayWordGroup(keywords);
       });
+
+  $.ajax({
+      method:'POST',
+      url:'http://localhost:3000/quiz'
+  }).done(function(data){
+      console.log(data);
+      quiz = data;
+  });
 
     $('#chooseWordBox').on('click', '.word', moveWord);
     $('#answerListBox').on('click', '.word', removeWord);
