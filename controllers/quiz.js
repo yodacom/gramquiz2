@@ -11,6 +11,14 @@ exports.addBestWord = (req, res)=>{
   });
 };
 
+exports.removeBestWord = (req, res) =>{
+  let word = req.body.word;
+  console.log('Best word removed:', word);
+  res.json({
+    message:'word removed'
+  });
+};
+
 // Define a Quiz schema. This would include the word selection and the final analysis report
 // Write endpoint functions:
 
