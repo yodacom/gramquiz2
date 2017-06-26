@@ -37,6 +37,7 @@ const contactController = require("./controllers/contact");
 const wordController = require("./controllers/word");
 const quizController = require("./controllers/quiz");
 const removeBestWord = require("./controllers/removebestword");
+const quizAnalysis = require("./controllers/quizAnalysis");
 
 /**
  * API keys and Passport configuration.
@@ -373,6 +374,7 @@ app.get("/quiz", quizController.getQuiz);
 app.put("/quiz/bestword", quizController.addBestWord);
 app.delete("/quiz/bestword", removeBestWord.removeBestWord);
 app.post("/quiz", quizController.createQuiz);
+app.get("/quiz/analysis", quizAnalysis.performAnalysis);
 
 /**
  *  End QUIZ ROUTES ===============

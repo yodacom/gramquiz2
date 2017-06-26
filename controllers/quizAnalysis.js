@@ -1,6 +1,5 @@
-import { TypeMatrix } from './personalityMatrix';
-import { TypeReport } from './personalReport';
-
+const PersonalityReport  = require('../models/PersonalityReport');
+/*
 export class Person {
   constructor(
     firstName,
@@ -135,4 +134,15 @@ export class PersonalityType {
   getPersonalityType() {
     return this.type[this.primary][this.secondary];
   }
+}
+
+*/
+exports.performAnalysis = (req, res) => {
+    const quiz_id = req.query.quiz;
+    PersonalityReport.findById(quiz_id, (err, quiz)=>{
+        //perform the actual analysis here
+        //all the best words == quiz.bestWords
+
+       res.json(quiz);
+    });
 }
