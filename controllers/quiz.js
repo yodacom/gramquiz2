@@ -26,7 +26,6 @@ exports.addBestWord = (req, res)=>{
   });
 };
 
-//TODO: Do something similar to add word here
 exports.removeBestWord = (req, res) =>{ 
   let word = req.body.word;
   let word_id = req.body.id;
@@ -34,7 +33,7 @@ exports.removeBestWord = (req, res) =>{
   PersonalityReport.findById(quiz_id, (err, quiz)=>{
     quiz.bestWords.splice(word_id);
     quiz.save();
-    //console.log(`word removed: ${word}`)
+    console.log(`word removed: ${word}`)
     res.json(quiz);
   
   });
