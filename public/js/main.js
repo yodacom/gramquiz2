@@ -70,8 +70,18 @@ function removeWord(elem) {
 function performAnalysis(){
     //person.analysis();
     //personalityReport();
-    console.log("ALL words are chosen, time to do the analysis");
-    //TODO: Request analysis from server
+    $.ajax({
+        method:'GET',
+        url: 'http://localhost:3000/quiz/analysis',
+        data: {
+            quiz:quiz._id
+        }
+    })
+    .done(function(res){
+        console.log(res);
+        //res is the quiz object sent from the server
+        //TODO:This is where we take the report and display it
+    });
 }
 
 
