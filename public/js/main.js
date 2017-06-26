@@ -51,7 +51,7 @@ function removeWord(elem) {
     const index = bestWords.findIndex((w)=> w.word = word);
     //person.removeWord(word);
     $.ajax({
-        method:'PUT',
+        method:'DELETE',
         url: 'http://localhost:3000/quiz/removebestword',
         data: {
             word:word,
