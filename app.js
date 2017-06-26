@@ -65,10 +65,10 @@ mongoose.connection.on("error", err => {
  * Populate the Mongo Database with initial data
  * TODO: Make this dependant on the dev environment
  */
-const db = require('./util/db');
-console.log('Pre populate the database');
+const db = require("./util/db");
+console.log("Pre populate the database");
 db();
-console.log('Done prepopulating the database');
+console.log("Done pre-populating the database");
 
 /**
  * Express configuration.
@@ -362,7 +362,7 @@ app.get(
 );
 
 /**
- * QUIZ ROUTES ================
+ * QUIZ ROUTES ================ 
  */
 
 app.get("/quiz/word", wordController.getWords);
@@ -370,6 +370,7 @@ app.post("/quiz/word", wordController.postWord);
 app.put("/quiz/word", wordController.updateWord);
 app.get("/quiz", quizController.getQuiz);
 app.put("/quiz/bestword", quizController.addBestWord);
+app.delete("/quiz/removebestword", quizController.removeBestWord);
 app.post("/quiz", quizController.createQuiz);
 
 /**

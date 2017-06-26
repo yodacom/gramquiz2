@@ -21,6 +21,7 @@ function displayWordGroup(keywords) {
     }
 }
 
+
 function moveWord(elem) {
     const word = $(this).text();
     const word_id = $(this).data("id");
@@ -42,12 +43,27 @@ function moveWord(elem) {
     currentWords.splice(index, 1);
 }
 
-function removeWord() {
+function removeWord(elem) {
     const word = $(this).text();
-    $(this).detach().appendTo('#chooseWordBox .wordlist');
+    const word_id =$(this).data("id");
+    // bestWords = [];
+    $(this).detach().prependTo('#chooseWordBox .wordlist');
+    const index = bestWords.findIndex((w)=> w.word = word);
     //person.removeWord(word);
-    //TODO: remove this word from server
-    currentWords.push(word);
+    $.ajax({
+        method:'PUT',
+        url: 'http://localhost:3000/quiz/removebestword',
+        data: {
+            word:word,
+            id:word_id,
+            quiz:quiz._id
+        }
+    })
+    .done(function(res){
+       console.log(res.message);
+    });
+    
+    // currentWords.push(word);
 
 }
 
