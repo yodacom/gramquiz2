@@ -36,6 +36,7 @@ const apiController = require("./controllers/api");
 const contactController = require("./controllers/contact");
 const wordController = require("./controllers/word");
 const quizController = require("./controllers/quiz");
+const removeBestWord = require("./controllers/removebestword");
 
 /**
  * API keys and Passport configuration.
@@ -370,7 +371,7 @@ app.post("/quiz/word", wordController.postWord);
 app.put("/quiz/word", wordController.updateWord);
 app.get("/quiz", quizController.getQuiz);
 app.put("/quiz/bestword", quizController.addBestWord);
-app.delete("/quiz/removebestword", quizController.removeBestWord);
+app.delete("/quiz/bestword", removeBestWord.removeBestWord);
 app.post("/quiz", quizController.createQuiz);
 
 /**

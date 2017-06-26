@@ -48,11 +48,11 @@ function removeWord(elem) {
     const word_id =$(this).data("id");
     // bestWords = [];
     $(this).detach().prependTo('#chooseWordBox .wordlist');
-    const index = bestWords.findIndex((w)=> w.word = word);
+// const index = bestWords.findIndex((w)=> w.word = word);
     //person.removeWord(word);
     $.ajax({
         method:'DELETE',
-        url: 'http://localhost:3000/quiz/removebestword',
+        url: 'http://localhost:3000/quiz/bestword',
         data: {
             word:word,
             id:word_id,
