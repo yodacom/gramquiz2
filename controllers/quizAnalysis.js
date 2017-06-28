@@ -1,34 +1,38 @@
 const PersonalityReport  = require('../models/PersonalityReport');
-/*
-export class Person {
-  constructor(
-    firstName,
-    lastName,
-    email,
-    nickname,
-    password,
-    personalityType,
 
-        ) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.nickname = nickname;
-    this.password = password;
-    this.personalityType = personalityType;
-    this.bestWords = [];
-  }
+// export class Person {
+//   constructor(
+//     firstName,
+//     lastName,
+//     email,
+//     nickname,
+//     password,
+//     personalityType,
 
-  addWord(word){
-    this.bestWords.push(word);
-  }
+//         ) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.email = email;
+//     this.nickname = nickname;
+//     this.password = password;
+//     this.personalityType = personalityType;
+//     this.bestWords = [];
+//   }
 
-  removeWord(word){
-      const index = this.bestWords.findIndex((w) => w.word == word);
-      this.bestWords.splice(index, 1);
-  }
+//   addWord(word){
+//     this.bestWords.push(word);
+//   }
 
-  analysis() {
+//   removeWord(word){
+//       const index = this.bestWords.findIndex((w) => w.word == word);
+//       this.bestWords.splice(index, 1);
+//   }
+
+
+exports.performAnalysis = (req, res) => {
+    const quiz_id = req.query.quiz;
+    PersonalityReport.findById(quiz_id, (err, quiz)=>{
+    let bestWords = quiz.bestWords
     const count = function (ary, classifier) {
         return ary.reduce((counter, item) => {
             const p = (classifier || String)(item);
@@ -135,14 +139,6 @@ export class PersonalityType {
     return this.type[this.primary][this.secondary];
   }
 }
-
-*/
-exports.performAnalysis = (req, res) => {
-    const quiz_id = req.query.quiz;
-    PersonalityReport.findById(quiz_id, (err, quiz)=>{
-        //perform the actual analysis here
-        //all the best words == quiz.bestWords
-
        res.json(quiz);
     });
 }
