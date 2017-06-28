@@ -1,4 +1,4 @@
-export const TypeMatrix = [
+const TypeMatrix = [
     {
         "primary": "R",
         "secondary": "o",
@@ -54,3 +54,5 @@ export const TypeMatrix = [
         "center": "IN"
     }
 ]
+
+module.exports = TypeMatrix;
