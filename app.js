@@ -372,6 +372,7 @@ app.post("/quiz/word", wordController.postWord);
 app.put("/quiz/word", wordController.updateWord);
 app.get("/quiz", quizController.getQuiz);
 app.put("/quiz/bestword", quizController.addBestWord);
+// app.get("/quiz/bestword", quizController.getBestWord);
 app.delete("/quiz/bestword", removeBestWord.removeBestWord);
 app.post("/quiz", quizController.createQuiz);
 app.get("/quiz/analysis", quizAnalysis.performAnalysis);
