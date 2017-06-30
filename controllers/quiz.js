@@ -20,7 +20,7 @@ exports.addBestWord = (req, res)=>{
     quiz.bestWords.push(word_id);
     quiz.save();
     console.log(`word saved ${word}`)
-    //console.table(bestWords)
+    // console.table(bestWords)
 
     res.json(quiz);
   });
