@@ -69,7 +69,7 @@ mongoose.connection.on("error", err => {
  */
 const db = require("./util/db");
 console.log("Pre populate the database");
-db();
+//db();
 console.log("Done pre-populating the database");
 
 /**

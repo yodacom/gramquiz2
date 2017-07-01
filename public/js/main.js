@@ -1,3 +1,6 @@
+/**
+ * The main client side JS file
+ */
 var quiz;
 
 function displayWordGroup(keywords) {
@@ -79,9 +82,28 @@ function performAnalysis(){
     })
     .done(function(res){
         console.log(res);
-        //res is the quiz object sent from the server
-        //TODO:This is where we take the report and display it
+        personalityReport(res);
     });
+}
+
+function personalityReport(report) {
+    // hide quiz boxes to show report
+    $('.contentBox').hide();
+    $('.headerBox').hide();
+    $('.contentBoxDescription').hide();
+    $('.actions').hide();
+
+    $('.personalityReport').append(`<h3>${report.center}</h3>`);
+    $('.personalityReport').append(`<h3>${report.primary}</h3>`);
+
+   // $('.personalityReport').append(`<h3>${person.getSecondary() }</h3>`);
+    $('.personalityReport').append(`<p>${report.description }</p>`);
+
+    $('.reports').show();
+}
+
+function refreshPage() {
+    location.reload();
 }
 
 
@@ -112,5 +134,7 @@ $(document).ready(function() {
         e.preventDefault();
         displayWordGroup(keywords);
     });
+
+    $('#ref_btn').click(refreshPage);
 
 });
