@@ -13,27 +13,27 @@ block content
     .form-group
       label.col-sm-3.control-label(for='name') Name
       .col-sm-7
-        input.form-control(type='text', name='name', id='name', value=user.profile.name)
+        input.form-control(type='text', name='name', id='name', value=user.name)
     .form-group
       label.col-sm-3.control-label Gender
       .col-sm-6
         label.radio.col-sm-3
-          input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
+          input(type='radio', checked=user.gender=='male', name='gender', value='male', data-toggle='radio')
           span Male
         label.radio.col-sm-3
-          input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
+          input(type='radio', checked=user.gender=='female', name='gender', value='female', data-toggle='radio')
           span Female
         label.radio.col-sm-3
-          input(type='radio', checked=user.profile.gender=='other', name='gender', value='other', data-toggle='radio')
+          input(type='radio', checked=user.gender=='other', name='gender', value='other', data-toggle='radio')
           span Other
     .form-group
       label.col-sm-3.control-label(for='location') Location
       .col-sm-7
-        input.form-control(type='text', name='location', id='location', value=user.profile.location)
+        input.form-control(type='text', name='location', id='location', value=user.location)
     .form-group
       label.col-sm-3.control-label(for='website') Website
       .col-sm-7
-        input.form-control(type='text', name='website', id='website', value=user.profile.website)
+        input.form-control(type='text', name='website', id='website', value=user.website)
     .form-group
       label.col-sm-3.control-label Gravatar
       .col-sm-4

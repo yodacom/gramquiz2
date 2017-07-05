@@ -5,8 +5,12 @@ exports.getQuiz = (req, res) => {
 };
 
 exports.createQuiz = (req, res) => {
-  //TODO: When the login works, ad the user to this object
-  PersonalityReport.create({}, (err, quiz)=>{
+
+  let user = req.user;
+
+  PersonalityReport.create({
+      user:user._id
+  }, (err, quiz)=>{
     res.json(quiz);
   });
 }
