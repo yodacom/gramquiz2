@@ -2,35 +2,6 @@ const PersonalityReport = require('../models/PersonalityReport');
 const PersonalityMatrix = require('../models/PersonalityMatrix');
 const TypeReport = require('../models/TypeReport');
 
-// export class Person {
-//   constructor(
-//     firstName,
-//     lastName,
-//     email,
-//     nickname,
-//     password,
-//     personalityType,
-
-//         ) {
-//     this.firstName = firstName;
-//     this.lastName = lastName;
-//     this.email = email;
-//     this.nickname = nickname;
-//     this.password = password;
-//     this.personalityType = personalityType;
-//     this.bestWords = [];
-//   }
-
-//   addWord(word){
-//     this.bestWords.push(word);
-//   }
-
-//   removeWord(word){
-//       const index = this.bestWords.findIndex((w) => w.word == word);
-//       this.bestWords.splice(index, 1);
-//   }
-
-
 exports.performAnalysis = (req, res) => {
     const quiz_id = req.query.quiz;
     PersonalityReport
