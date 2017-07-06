@@ -14,7 +14,10 @@
         li(class=(title == 'Home') ? 'active' : undefined)
           a(href='/') Home
         li(class=(title == 'Take Quiz') ? 'active' : undefined)
-          a(href='/quiz') Take Quiz
+          if !user
+            a(href='/quiz') Take Quiz
+          else
+            a(href='/report') View Report
         li(class=(title == 'Contact') ? 'active' : undefined)
           a(href='/contact') Contact
         //- li

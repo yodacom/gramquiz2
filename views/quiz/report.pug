@@ -1,0 +1,28 @@
+extends layout2
+
+block content
+    h1 Enneagram Word Quiz
+    header
+
+        .headerBox
+            h2
+
+            p
+                | Here is your Personality Report
+                user.name
+                span.emphasis
+                |
+        main
+            if report
+                You already did the quiz
+                Display the full personality report here
+                Probably give a link to retake quiz
+                The report object contains the full personality report
+                The user object contains details of the user
+            else
+                You need to take the quiz
+                a(href='/quiz') Click Here to Start
+        footer.footer
+            a(href='http://aktheos.com') Find out more about your typology here
+            br
+            small © Copyright 2016-2017 by YodaCom LLC. All Rights Reserved.

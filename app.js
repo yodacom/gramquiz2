@@ -38,6 +38,7 @@ const wordController = require("./controllers/word");
 const quizController = require("./controllers/quiz");
 const removeBestWord = require("./controllers/removebestword");
 const quizAnalysis = require("./controllers/quizAnalysis");
+const reportController = require("./controllers/report");
 
 /**
  * API keys and Passport configuration.
@@ -370,12 +371,23 @@ app.get(
 app.get("/quiz/word", wordController.getWords);
 app.post("/quiz/word", wordController.postWord);
 app.put("/quiz/word", wordController.updateWord);
-app.get("/quiz", quizController.getQuiz);
+app.get(
+    "/quiz",
+    passportConfig.isAuthenticated,
+    quizController.getQuiz);
 app.put("/quiz/bestword", quizController.addBestWord);
 // app.get("/quiz/bestword", quizController.getBestWord);
 app.delete("/quiz/bestword", removeBestWord.removeBestWord);
-app.post("/quiz", quizController.createQuiz);
+app.post(
+    "/quiz",
+    passportConfig.isAuthenticated,
+    quizController.createQuiz);
 app.get("/quiz/analysis", quizAnalysis.performAnalysis);
+app.get(
+    "/report",
+    passportConfig.isAuthenticated,
+    reportController.getReport
+);
 
 /**
  *  End QUIZ ROUTES ===============
