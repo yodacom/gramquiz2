@@ -55,7 +55,10 @@ exports.performAnalysis = (req, res) => {
                 TypeReport.findOne({
                     typeNumber:matrix.type
                 }, (err, report) => {
-                    res.json(report);
+                    quiz.personalityType = report;
+                    quiz.save((err)=>{
+                        res.json(report);
+                    });
                 })
             });
 

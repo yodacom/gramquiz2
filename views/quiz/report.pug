@@ -14,11 +14,14 @@ block content
                 |
         main
             if report
-                You already did the quiz
-                Display the full personality report here
-                Probably give a link to retake quiz
-                The report object contains the full personality report
-                The user object contains details of the user
+                each rep, index in report
+                    if rep.personalityType
+                        div
+                            div=rep.personalityType.typeNumber
+                            div=rep.personalityType.center
+                            div=rep.personalityType.description
+
+                a(href='/quiz') Take the Quiz again
             else
                 You need to take the quiz
                 a(href='/quiz') Click Here to Start

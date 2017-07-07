@@ -7,7 +7,9 @@ exports.getReport = (req, res) => {
         .find({
             user:user._id
         })
-        .populate('user', 'bestWords')
+        .populate('user')
+        .populate('bestWords')
+        .populate('personalityType')
         .exec()
         .then((report)=>{
             res.render("quiz/report", {
