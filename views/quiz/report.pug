@@ -1,31 +1,38 @@
 extends layout2
 
 block content
-    h1 Enneagram Word Quiz
-    header
+  h1 Enneagram Word Quiz
+  header
 
-        .headerBox
-            h2
-
-            p
-                | Here is your Personality Report
-                user.name
-                span.emphasis
-                |
-        main
-            if report
-                each rep, index in report
-                    if rep.personalityType
-                        div
-                            div=rep.personalityType.typeNumber
-                            div=rep.personalityType.center
-                            div=rep.personalityType.description
-
-                a(href='/quiz') Take the Quiz again
-            else
-                You need to take the quiz
-                a(href='/quiz') Click Here to Start
-        footer.footer
-            a(href='http://aktheos.com') Find out more about your typology here
-            br
-            small © Copyright 2016-2017 by YodaCom LLC. All Rights Reserved.
+    .headerBox
+      h2
+        | Enneagram Report
+        user.name
+        span.emphasis
+        |
+    main
+      - var reportNum = 1
+      if report
+        each rep, index in report
+          if rep.personalityType
+            div
+                h3.center= `This is Word Quiz Result # ${reportNum++} `
+                .container
+                  
+                  div=` Your Type Number is ${rep.personalityType.typeNumber} `
+                  div=` Your Center is: ${rep.personalityType.center}`
+                div=rep.personalityType.description
+        p
+          a#ref_btn.btn.btn-red.refreshBtn(href='/quiz') Take the Quiz Again?
+          span
+            a#ref_btn.btn.btn-red.refresh(href='http://aktheos.com') Find out more about your type
+       
+      else
+        You need to take the quiz
+        a(href='/quiz') Click Here to Start
+    
+    footer.footer
+      
+      a(href='http://aktheos.com') Find out more about your typology here
+        br
+        small © Copyright 2016-2017 by YodaCom LLC. All Rights Reserved.
