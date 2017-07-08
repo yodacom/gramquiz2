@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    .page-header
+    h1 { Coming Soon }
+        h3 if you leave us your address we can contact you
+
+    section.container
+        .wrapBox.animated.rollin
+            .box
+                .thanks
+                .form(action="#")
+                    div
+                        label (for="first-name")Your best email address:
+
+                        input (type="email" name="first-name" id="name" placeholder="")
