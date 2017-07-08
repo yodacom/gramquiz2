@@ -32,58 +32,58 @@ function moveWord(elem) {
     const index = currentWords.findIndex((w) => w.word == word);
     //person.addWord(currentWords[index]);
     $.ajax({
-        method:'PUT',
+        method: 'PUT',
         url: 'http://localhost:3000/quiz/bestword',
         data: {
-            word:word,
-            id:word_id,
-            quiz:quiz._id
+            word: word,
+            id: word_id,
+            quiz: quiz._id
         }
     })
-    .done(function(res){
-       console.log(res.message);
-    });
+        .done(function (res) {
+            console.log(res.message);
+        });
     currentWords.splice(index, 1);
 }
 
 function removeWord(elem) {
     const word = $(this).text();
-    const word_id =$(this).data("id");
+    const word_id = $(this).data("id");
     // bestWords = [];
     $(this).detach().prependTo('#chooseWordBox .wordlist');
-// const index = bestWords.findIndex((w)=> w.word = word);
+    // const index = bestWords.findIndex((w)=> w.word = word);
     //person.removeWord(word);
     $.ajax({
-        method:'DELETE',
+        method: 'DELETE',
         url: 'http://localhost:3000/quiz/bestword',
         data: {
-            word:word,
-            id:word_id,
-            quiz:quiz._id
+            word: word,
+            id: word_id,
+            quiz: quiz._id
         }
     })
-    .done(function(res){
-       console.log(res.message);
-    });
-    
+        .done(function (res) {
+            console.log(res.message);
+        });
+
     // currentWords.push(word);
 
 }
 
-function performAnalysis(){
+function performAnalysis() {
     //person.analysis();
     //personalityReport();
     $.ajax({
-        method:'GET',
+        method: 'GET',
         url: 'http://localhost:3000/quiz/analysis',
         data: {
-            quiz:quiz._id
+            quiz: quiz._id
         }
     })
-    .done(function(res){
-        console.log(res);
-        personalityReport(res);
-    });
+        .done(function (res) {
+            console.log(res);
+            personalityReport(res);
+        });
 }
 
 function personalityReport(report) {
@@ -94,10 +94,10 @@ function personalityReport(report) {
     $('.actions').hide();
 
     $('.personalityReport').append(`<h3>${report.center}</h3>`);
-    $('.personalityReport').append(`<h3>${report.primary}</h3>`);
+    // $('.personalityReport').append(`<h3>${report.primary}</h3>`);
 
-   // $('.personalityReport').append(`<h3>${person.getSecondary() }</h3>`);
-    $('.personalityReport').append(`<p>${report.description }</p>`);
+    // $('.personalityReport').append(`<h3>${person.getSecondary()}</h3>`);
+    $('.personalityReport').append(`<p>${report.description}</p>`);
 
     $('.reports').show();
 }
@@ -107,26 +107,26 @@ function refreshPage() {
 }
 
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-  var keywords;
+    var keywords;
 
-  //load up the array of words
-  $.ajax({
-      url: 'http://localhost:3000/quiz/word'
-  })
-      .done(function(data){
-          keywords = data;
-          displayWordGroup(keywords);
-      });
+    //load up the array of words
+    $.ajax({
+        url: 'http://localhost:3000/quiz/word'
+    })
+        .done(function (data) {
+            keywords = data;
+            displayWordGroup(keywords);
+        });
 
-  $.ajax({
-      method:'POST',
-      url:'http://localhost:3000/quiz'
-  }).done(function(data){
-      console.log(data);
-      quiz = data;
-  });
+    $.ajax({
+        method: 'POST',
+        url: 'http://localhost:3000/quiz'
+    }).done(function (data) {
+        console.log(data);
+        quiz = data;
+    });
 
     $('#chooseWordBox').on('click', '.word', moveWord);
     $('#answerListBox').on('click', '.word', removeWord);
