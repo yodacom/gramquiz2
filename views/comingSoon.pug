@@ -1,16 +1,30 @@
 extends layout
 
 block content
-    .page-header
-    h1 { Coming Soon }
-        h3 if you leave us your address we can contact you
-
-    section.container
-        .wrapBox.animated.rollin
-            .box
-                .thanks
-                .form(action="#")
-                    div
-                        label (for="first-name")Your best email address:
-
-                        input (type="email" name="first-name" id="name" placeholder="")
+header
+  h1 { We're Coming }
+  h3 If you leave us your address we can contact you
+section.container
+  .wrapBox.animated.rollIn
+    .box
+      .thanks
+        p THANK YOU!
+      form(action='#')
+        div
+          label(for='first-name') Your best email address:
+          input#name(type='email', name='first-name', placeholder='')
+        div
+          button#send(type='submit')
+            | SUBMIT 
+            i.fa.fa-paper-plane
+    //-   .social
+    //-     ul
+    //-       li
+    //-         i.fa.fa-facebook
+    //-       li
+    //-         i.fa.fa-google-plus
+    //-       li
+    //-         i.fa.fa-twitter
+    //-       li
+    //-         i.fa.fa-youtube
+footer
