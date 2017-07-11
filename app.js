@@ -39,6 +39,8 @@ const quizController = require("./controllers/quiz");
 const removeBestWord = require("./controllers/removebestword");
 const quizAnalysis = require("./controllers/quizAnalysis");
 const reportController = require("./controllers/report");
+const comingSoon = require("./controllers/comingSoon");
+const profilesOverview = require("./controllers/profilesOverview");
 
 /**
  * API keys and Passport configuration.
@@ -388,6 +390,8 @@ app.get(
     passportConfig.isAuthenticated,
     reportController.getReport
 );
+app.get("/comingSoon", comingSoon.index);
+app.get("/profilesOverview", profilesOverview.index);
 
 /**
  *  End QUIZ ROUTES ===============

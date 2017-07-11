@@ -1,22 +1,22 @@
-extends layout
+extends ./layout2
 
 block content
-header
-  h1 { We're Coming }
-  h3 If you leave us your address we can contact you
-section.container
-  .wrapBox.animated.rollIn
-    .box
-      .thanks
-        p THANK YOU!
-      form(action='#')
-        div
-          label(for='first-name') Your best email address:
-          input#name(type='email', name='first-name', placeholder='')
-        div
-          button#send(type='submit')
-            | SUBMIT 
-            i.fa.fa-paper-plane
+    header
+        h1 { We're Coming }
+        h3 If you leave us your address we can contact you
+    section.container
+        .wrapBox.animated.rollIn
+            .box
+                .thanks
+                    p THANK YOU!
+                form(action='#')
+                    div
+                        label(for='first-name') Your best email address:
+                        input#name(type='email', name='first-name', placeholder='')
+                    div
+                        button#send(type='submit')
+                            | SUBMIT 
+                            i.fa.fa-paper-plane
     //-   .social
     //-     ul
     //-       li
@@ -27,4 +27,7 @@ section.container
     //-         i.fa.fa-twitter
     //-       li
     //-         i.fa.fa-youtube
-footer
+block scripts
+    script(src='/js/comingSoon.js')
+block style
+    link(href='/css/comingSoon.css',rel='stylesheet')
