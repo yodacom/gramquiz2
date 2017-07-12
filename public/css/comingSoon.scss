@@ -19,7 +19,6 @@
 body{
   background-color: #34495e;
 }
-
 header{
   margin-top: 100px;
   h1, h3{
@@ -28,19 +27,16 @@ header{
     color: #95a5a6;
   }
 }
-
 .container{
   width: 50%;
   position: relative;
   margin: 0 auto;
   z-index: 1;
 }
-
 .wrapBox{
     animation-delay: 1s;
     animation-duration: 3s;
 }
-
 .box{
   background-color: #e74c3c;
   width: 100%;
@@ -49,13 +45,11 @@ header{
   box-sizing: border-box;
   overflow: visible;
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
-  
   label{
     color: #FFF;
     font-size:1.3em;
     font-family: 'Dosis', sans-serif; 
   }
-  
   input[type="email"]{
     background: transparent;
     border: none;
@@ -142,4 +136,3 @@ and (max-width : 1024px) {
     width: 80%;
   }
 }
- 
