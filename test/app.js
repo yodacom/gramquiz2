@@ -1,4 +1,5 @@
 const request = require('supertest');
+const expect = require('expect');
 const app = require('../app.js');
 
 describe('GET /', () => {

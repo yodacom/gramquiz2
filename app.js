@@ -36,6 +36,11 @@ const apiController = require("./controllers/api");
 const contactController = require("./controllers/contact");
 const wordController = require("./controllers/word");
 const quizController = require("./controllers/quiz");
+const removeBestWord = require("./controllers/removebestword");
+const quizAnalysis = require("./controllers/quizAnalysis");
+const reportController = require("./controllers/report");
+const comingSoon = require("./controllers/comingSoon");
+const profilesOverview = require("./controllers/profilesOverview");
 
 /**
  * API keys and Passport configuration.
@@ -65,10 +70,10 @@ mongoose.connection.on("error", err => {
  * Populate the Mongo Database with initial data
  * TODO: Make this dependant on the dev environment
  */
-const db = require('./util/db');
-console.log('Pre populate the database');
-db();
-console.log('Done prepopulating the database');
+const db = require("./util/db");
+console.log("Pre populate the database");
+//db();
+console.log("Done pre-populating the database");
 
 /**
  * Express configuration.
@@ -362,15 +367,31 @@ app.get(
 );
 
 /**
- * QUIZ ROUTES ================
+ * QUIZ ROUTES ================ 
  */
 
 app.get("/quiz/word", wordController.getWords);
 app.post("/quiz/word", wordController.postWord);
 app.put("/quiz/word", wordController.updateWord);
-app.get("/quiz", quizController.getQuiz);
+app.get(
+    "/quiz",
+    passportConfig.isAuthenticated,
+    quizController.getQuiz);
 app.put("/quiz/bestword", quizController.addBestWord);
-app.post("/quiz", quizController.createQuiz);
+// app.get("/quiz/bestword", quizController.getBestWord);
+app.delete("/quiz/bestword", removeBestWord.removeBestWord);
+app.post(
+    "/quiz",
+    passportConfig.isAuthenticated,
+    quizController.createQuiz);
+app.get("/quiz/analysis", quizAnalysis.performAnalysis);
+app.get(
+    "/report",
+    passportConfig.isAuthenticated,
+    reportController.getReport
+);
+app.get("/comingSoon", comingSoon.index);
+app.get("/profilesOverview", profilesOverview.index);
 
 /**
  *  End QUIZ ROUTES ===============
