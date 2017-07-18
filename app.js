@@ -25,7 +25,7 @@ const upload = multer({ dest: path.join(__dirname, "uploads") });
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-dotenv.load({ path: ".env.example" });
+dotenv.load({ path: ".env" });
 
 /**
  * Controllers (route handlers).
@@ -374,21 +374,21 @@ app.get("/quiz/word", wordController.getWords);
 app.post("/quiz/word", wordController.postWord);
 app.put("/quiz/word", wordController.updateWord);
 app.get(
-    "/quiz",
-    passportConfig.isAuthenticated,
-    quizController.getQuiz);
+  "/quiz",
+  passportConfig.isAuthenticated,
+  quizController.getQuiz);
 app.put("/quiz/bestword", quizController.addBestWord);
 // app.get("/quiz/bestword", quizController.getBestWord);
 app.delete("/quiz/bestword", removeBestWord.removeBestWord);
 app.post(
-    "/quiz",
-    passportConfig.isAuthenticated,
-    quizController.createQuiz);
+  "/quiz",
+  passportConfig.isAuthenticated,
+  quizController.createQuiz);
 app.get("/quiz/analysis", quizAnalysis.performAnalysis);
 app.get(
-    "/report",
-    passportConfig.isAuthenticated,
-    reportController.getReport
+  "/report",
+  passportConfig.isAuthenticated,
+  reportController.getReport
 );
 app.get("/comingSoon", comingSoon.index);
 app.get("/profilesOverview", profilesOverview.index);
