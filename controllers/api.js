@@ -46,15 +46,15 @@ exports.getFoursquare = (req, res, next) => {
     foursquare.Venues.getVenueAsync('49da74aef964a5208b5e1fe3', token.accessToken),
     foursquare.Users.getCheckinsAsync('self', null, token.accessToken)
   ])
-  .then(([trendingVenues, venueDetail, userCheckins]) => {
-    res.render('api/foursquare', {
-      title: 'Foursquare API',
-      trendingVenues,
-      venueDetail,
-      userCheckins
-    });
-  })
-  .catch(next);
+    .then(([trendingVenues, venueDetail, userCheckins]) => {
+      res.render('api/foursquare', {
+        title: 'Foursquare API',
+        trendingVenues,
+        venueDetail,
+        userCheckins
+      });
+    })
+    .catch(next);
 };
 
 /**
@@ -193,39 +193,39 @@ exports.getLastfm = (req, res, next) => {
       });
     });
   const artistTopAlbums = () =>
-      new Promise((resolve, reject) => {
-        lastfm.request('artist.getTopAlbums', {
-          artist: 'Roniit',
-          handlers: {
-            success: (data) => {
-              resolve(data.topalbums.album.slice(0, 3));
-            },
-            error: reject
-          }
-        });
+    new Promise((resolve, reject) => {
+      lastfm.request('artist.getTopAlbums', {
+        artist: 'Roniit',
+        handlers: {
+          success: (data) => {
+            resolve(data.topalbums.album.slice(0, 3));
+          },
+          error: reject
+        }
       });
+    });
   Promise.all([
     artistInfo(),
     artistTopTracks(),
     artistTopAlbums()
   ])
-  .then(([artistInfo, artistTopAlbums, artistTopTracks]) => {
-    const artist = {
-      name: artistInfo.artist.name,
-      image: artistInfo.artist.image.slice(-1)[0]['#text'],
-      tags: artistInfo.artist.tags.tag,
-      bio: artistInfo.artist.bio.summary,
-      stats: artistInfo.artist.stats,
-      similar: artistInfo.artist.similar.artist,
-      topAlbums: artistTopAlbums,
-      topTracks: artistTopTracks
-    };
-    res.render('api/lastfm', {
-      title: 'Last.fm API',
-      artist
-    });
-  })
-  .catch(next);
+    .then(([artistInfo, artistTopAlbums, artistTopTracks]) => {
+      const artist = {
+        name: artistInfo.artist.name,
+        image: artistInfo.artist.image.slice(-1)[0]['#text'],
+        tags: artistInfo.artist.tags.tag,
+        bio: artistInfo.artist.bio.summary,
+        stats: artistInfo.artist.stats,
+        similar: artistInfo.artist.similar.artist,
+        topAlbums: artistTopAlbums,
+        topTracks: artistTopTracks
+      };
+      res.render('api/lastfm', {
+        title: 'Last.fm API',
+        artist
+      });
+    })
+    .catch(next);
 };
 
 /**
@@ -320,15 +320,15 @@ exports.getSteam = (req, res, next) => {
     playerSummaries(),
     ownedGames()
   ])
-  .then(([playerAchievements, playerSummaries, ownedGames]) => {
-    res.render('api/steam', {
-      title: 'Steam Web API',
-      ownedGames: ownedGames.response.games,
-      playerAchievements: playerAchievements.playerstats,
-      playerSummary: playerSummaries.response.players[0]
-    });
-  })
-  .catch(next);
+    .then(([playerAchievements, playerSummaries, ownedGames]) => {
+      res.render('api/steam', {
+        title: 'Steam Web API',
+        ownedGames: ownedGames.response.games,
+        playerAchievements: playerAchievements.playerstats,
+        playerSummary: playerSummaries.response.players[0]
+      });
+    })
+    .catch(next);
 };
 
 /**
@@ -368,38 +368,38 @@ exports.postStripe = (req, res) => {
  * GET /api/twilio
  * Twilio API example.
  */
-exports.getTwilio = (req, res) => {
-  res.render('api/twilio', {
-    title: 'Twilio API'
-  });
-};
+// exports.getTwilio = (req, res) => {
+//   res.render('api/twilio', {
+//     title: 'Twilio API'
+//   });
+// };
 
-/**
- * POST /api/twilio
- * Send a text message using Twilio.
- */
-exports.postTwilio = (req, res, next) => {
-  req.assert('number', 'Phone number is required.').notEmpty();
-  req.assert('message', 'Message cannot be blank.').notEmpty();
+// /**
+//  * POST /api/twilio
+//  * Send a text message using Twilio.
+//  */
+// exports.postTwilio = (req, res, next) => {
+//   req.assert('number', 'Phone number is required.').notEmpty();
+//   req.assert('message', 'Message cannot be blank.').notEmpty();
 
-  const errors = req.validationErrors();
+//   const errors = req.validationErrors();
 
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/api/twilio');
-  }
+//   if (errors) {
+//     req.flash('errors', errors);
+//     return res.redirect('/api/twilio');
+//   }
 
-  const message = {
-    to: req.body.number,
-    from: '+13472235148',
-    body: req.body.message
-  };
-  twilio.sendMessage(message, (err, responseData) => {
-    if (err) { return next(err.message); }
-    req.flash('success', { msg: `Text sent to ${responseData.to}.` });
-    res.redirect('/api/twilio');
-  });
-};
+//   const message = {
+//     to: req.body.number,
+//     from: '+13472235148',
+//     body: req.body.message
+//   };
+//   twilio.sendMessage(message, (err, responseData) => {
+//     if (err) { return next(err.message); }
+//     req.flash('success', { msg: `Text sent to ${responseData.to}.` });
+//     res.redirect('/api/twilio');
+//   });
+// };
 
 /**
  * GET /api/clockwork
@@ -458,16 +458,16 @@ exports.getInstagram = (req, res, next) => {
     ig.media_popularAsync(),
     ig.user_self_media_recentAsync()
   ])
-  .then(([searchByUsername, searchByUserId, popularImages, myRecentMedia]) => {
-    res.render('api/instagram', {
-      title: 'Instagram API',
-      usernames: searchByUsername,
-      userById: searchByUserId,
-      popularImages,
-      myRecentMedia
-    });
-  })
-  .catch(next);
+    .then(([searchByUsername, searchByUserId, popularImages, myRecentMedia]) => {
+      res.render('api/instagram', {
+        title: 'Instagram API',
+        usernames: searchByUsername,
+        userById: searchByUserId,
+        popularImages,
+        myRecentMedia
+      });
+    })
+    .catch(next);
 };
 
 /**
