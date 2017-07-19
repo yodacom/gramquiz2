@@ -10,7 +10,7 @@ const Twit = require('twit');
 const stripe = require('stripe')(process.env.STRIPE_SKEY);
 //const twilio = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 const Linkedin = require('node-linkedin')(process.env.LINKEDIN_ID, process.env.LINKEDIN_SECRET, process.env.LINKEDIN_CALLBACK_URL);
-const clockwork = require('clockwork')({ key: process.env.CLOCKWORK_KEY });
+//const clockwork = require('clockwork')({ key: process.env.CLOCKWORK_KEY });
 const paypal = require('paypal-rest-sdk');
 const lob = require('lob')(process.env.LOB_KEY);
 const ig = bluebird.promisifyAll(require('instagram-node').instagram());
@@ -405,28 +405,28 @@ exports.postStripe = (req, res) => {
  * GET /api/clockwork
  * Clockwork SMS API example.
  */
-exports.getClockwork = (req, res) => {
-  res.render('api/clockwork', {
-    title: 'Clockwork SMS API'
-  });
-};
+// exports.getClockwork = (req, res) => {
+//   res.render('api/clockwork', {
+//     title: 'Clockwork SMS API'
+//   });
+// };
 
 /**
  * POST /api/clockwork
  * Send a text message using Clockwork SMS
  */
-exports.postClockwork = (req, res, next) => {
-  const message = {
-    To: req.body.telephone,
-    From: 'gramQuiz',
-    Content: 'Hello from gramquiz'
-  };
-  clockwork.sendSms(message, (err, responseData) => {
-    if (err) { return next(err.errDesc); }
-    req.flash('success', { msg: `Text sent to ${responseData.responses[0].to}` });
-    res.redirect('/api/clockwork');
-  });
-};
+// exports.postClockwork = (req, res, next) => {
+//   const message = {
+//     To: req.body.telephone,
+//     From: 'gramQuiz',
+//     Content: 'Hello from gramquiz'
+//   };
+//   clockwork.sendSms(message, (err, responseData) => {
+//     if (err) { return next(err.errDesc); }
+//     req.flash('success', { msg: `Text sent to ${responseData.responses[0].to}` });
+//     res.redirect('/api/clockwork');
+//   });
+// };
 
 /**
  * GET /api/linkedin
