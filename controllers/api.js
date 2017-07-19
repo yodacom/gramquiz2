@@ -14,16 +14,16 @@ const Linkedin = require('node-linkedin')(process.env.LINKEDIN_ID, process.env.L
 const paypal = require('paypal-rest-sdk');
 const lob = require('lob')(process.env.LOB_KEY);
 const ig = bluebird.promisifyAll(require('instagram-node').instagram());
-const foursquare = require('node-foursquare')({
-  secrets: {
-    clientId: process.env.FOURSQUARE_ID,
-    clientSecret: process.env.FOURSQUARE_SECRET,
-    redirectUrl: process.env.FOURSQUARE_REDIRECT_URL
-  }
-});
+// const foursquare = require('node-foursquare')({
+//   secrets: {
+//     clientId: process.env.FOURSQUARE_ID,
+//     clientSecret: process.env.FOURSQUARE_SECRET,
+//     redirectUrl: process.env.FOURSQUARE_REDIRECT_URL
+//   }
+// });
 
-foursquare.Venues = bluebird.promisifyAll(foursquare.Venues);
-foursquare.Users = bluebird.promisifyAll(foursquare.Users);
+// foursquare.Venues = bluebird.promisifyAll(foursquare.Venues);
+// foursquare.Users = bluebird.promisifyAll(foursquare.Users);
 
 /**
  * GET /api
@@ -39,23 +39,23 @@ exports.getApi = (req, res) => {
  * GET /api/foursquare
  * Foursquare API example.
  */
-exports.getFoursquare = (req, res, next) => {
-  const token = req.user.tokens.find(token => token.kind === 'foursquare');
-  Promise.all([
-    foursquare.Venues.getTrendingAsync('40.7222756', '-74.0022724', { limit: 50 }, token.accessToken),
-    foursquare.Venues.getVenueAsync('49da74aef964a5208b5e1fe3', token.accessToken),
-    foursquare.Users.getCheckinsAsync('self', null, token.accessToken)
-  ])
-    .then(([trendingVenues, venueDetail, userCheckins]) => {
-      res.render('api/foursquare', {
-        title: 'Foursquare API',
-        trendingVenues,
-        venueDetail,
-        userCheckins
-      });
-    })
-    .catch(next);
-};
+// exports.getFoursquare = (req, res, next) => {
+//   const token = req.user.tokens.find(token => token.kind === 'foursquare');
+//   Promise.all([
+//     foursquare.Venues.getTrendingAsync('40.7222756', '-74.0022724', { limit: 50 }, token.accessToken),
+//     foursquare.Venues.getVenueAsync('49da74aef964a5208b5e1fe3', token.accessToken),
+//     foursquare.Users.getCheckinsAsync('self', null, token.accessToken)
+//   ])
+//     .then(([trendingVenues, venueDetail, userCheckins]) => {
+//       res.render('api/foursquare', {
+//         title: 'Foursquare API',
+//         trendingVenues,
+//         venueDetail,
+//         userCheckins
+//       });
+//     })
+//     .catch(next);
+// };
 
 /**
  * GET /api/tumblr

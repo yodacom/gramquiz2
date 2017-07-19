@@ -330,14 +330,14 @@ app.get(
 /**
  * OAuth authorization routes. (API examples)
  */
-app.get("/auth/foursquare", passport.authorize("foursquare"));
-app.get(
-  "/auth/foursquare/callback",
-  passport.authorize("foursquare", { failureRedirect: "/api" }),
-  (req, res) => {
-    res.redirect("/api/foursquare");
-  }
-);
+// app.get("/auth/foursquare", passport.authorize("foursquare"));
+// app.get(
+//   "/auth/foursquare/callback",
+//   passport.authorize("foursquare", { failureRedirect: "/api" }),
+//   (req, res) => {
+//     res.redirect("/api/foursquare");
+//   }
+// );
 app.get("/auth/tumblr", passport.authorize("tumblr"));
 app.get(
   "/auth/tumblr/callback",
