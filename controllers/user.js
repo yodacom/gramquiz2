@@ -22,29 +22,32 @@ exports.getLogin = (req, res) => {
  * Sign in using email and password.
  */
 exports.postLogin = (req, res, next) => {
+  console.log('The Body: ', req.body);
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('password', 'Password cannot be blank').notEmpty();
   req.sanitize('email').normalizeEmail({ remove_dots: false });
 
-  const errors = req.getValidationResult();
-
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/login');
-  }
-
-  passport.authenticate('local', (err, user, info) => {
-    if (err) { return next(err); }
-    if (!user) {
-      req.flash('errors', info);
-      return res.redirect('/login');
-    }
-    req.logIn(user, (err) => {
-      if (err) { return next(err); }
-      req.flash('success', { msg: 'Success! You are logged in.' });
-      res.redirect(req.session.returnTo || '/');
-    });
-  })(req, res, next);
+  req.getValidationResult()
+      .then(errors=>{
+        if (!errors.isEmpty()) {
+            console.log('Validation errors: ', errors);
+            req.flash('errors', errors);
+            return res.redirect('/login');
+        }
+        passport.authenticate('local', (err, user, info) => {
+            if (err) { return next(err); }
+            if (!user) {
+                console.log('Authentication errors', info);
+                req.flash('errors', info);
+                return res.redirect('/login');
+            }
+            req.logIn(user, (err) => {
+                if (err) { return next(err); }
+                req.flash('success', { msg: 'Success! You are logged in.' });
+                res.redirect(req.session.returnTo || '/');
+            });
+        })(req, res, next);
+      });
 };
 
 /**
@@ -79,34 +82,37 @@ exports.postSignup = (req, res, next) => {
   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
   req.sanitize('email').normalizeEmail({ remove_dots: false });
 
-  const errors = req.getValidationResult();
-
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/signup');
-  }
-
-  const user = new User({
-    email: req.body.email,
-    password: req.body.password
-  });
-
-  User.findOne({ email: req.body.email }, (err, existingUser) => {
-    if (err) { return next(err); }
-    if (existingUser) {
-      req.flash('errors', { msg: 'Account with that email address already exists.' });
-      return res.redirect('/signup');
-    }
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.logIn(user, (err) => {
-        if (err) {
-          return next(err);
+  req.getValidationResult()
+      .then(errors=>{
+        if (!errors.isEmpty()) {
+            req.flash('errors', errors);
+            return res.redirect('/signup');
         }
-        res.redirect('/');
-      });
-    });
+
+        const user = new User({
+            email: req.body.email,
+            password: req.body.password
+        });
+
+        User.findOne({ email: req.body.email }, (err, existingUser) => {
+            if (err) { return next(err); }
+            if (existingUser) {
+                req.flash('errors', { msg: 'Account with that email address already exists.' });
+                return res.redirect('/signup');
+            }
+            user.save((err) => {
+                if (err) { return next(err); }
+                req.logIn(user, (err) => {
+                    if (err) {
+                        return next(err);
+                    }
+                    res.redirect('/');
+                });
+            });
+        });
   });
+
+
 };
 
 /**
