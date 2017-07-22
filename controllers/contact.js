@@ -57,12 +57,12 @@ exports.postContact = (req, res) => {
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('message', 'Message cannot be blank').notEmpty();
 
-  const errors = req.getValidationResult();
+  req.getValidationResult()
+    .then(errors => {
+      req.flash('errors', errors);
+      return res.redirect('/contact');
+    });
 
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/contact');
-  }
 
   const mailOptions = {
     to: 'your@email.com',
