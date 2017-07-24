@@ -256,12 +256,13 @@ exports.getTwitter = (req, res, next) => {
 exports.postTwitter = (req, res, next) => {
   req.assert('tweet', 'Tweet cannot be empty').notEmpty();
 
-  const errors = req.getValidationResult();
-
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/api/twitter');
-  }
+  req.getValidationResult()
+    .then(errors => {
+      if (!errors.empty()) {
+        req.flash('errors', errors);
+        return res.redirect('/api/twitter');
+      }
+    });
 
   const token = req.user.tokens.find(token => token.kind === 'twitter');
   const T = new Twit({
@@ -594,12 +595,13 @@ exports.postPinterest = (req, res, next) => {
   req.assert('note', 'Note cannot be blank.').notEmpty();
   req.assert('image_url', 'Image URL cannot be blank.').notEmpty();
 
-  const errors = req.getValidationResult();
-
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/api/pinterest');
-  }
+  req.getValidationResult()
+    .then(errors => {
+      if (!errors.isEmpty()) {
+        req.flash('errors', errors);
+        return res.redirect('/api/pinterest');
+      }
+    });
 
   const token = req.user.tokens.find(token => token.kind === 'pinterest');
   const formData = {

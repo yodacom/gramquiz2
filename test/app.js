@@ -1,6 +1,9 @@
 const request = require('supertest');
 const expect = require('expect');
 const app = require('../app.js');
+const mockery = require('mockery');
+const nodemailerMock = require('nodemailer-mock');
+
 
 // describe('GET /', () => {
 //   it('should return 200 OK', (done) => {
@@ -35,6 +38,34 @@ const app = require('../app.js');
 // });
 
 describe('GET /contact', () => {
+
+    before(function() {
+        // Enable mockery to mock objects
+        mockery.enable({
+            warnOnUnregistered: false,
+        });
+
+        /* Once mocked, any code that calls require('nodemailer')
+        will get our nodemailerMock */
+        mockery.registerMock('nodemailer', nodemailerMock)
+
+        // IMPORTANT!
+        /* Make sure anything that uses nodemailer is loaded here,
+        after it is mocked... */
+    });
+
+    afterEach(function() {
+        // Reset the mock back to the defaults after each test
+        nodemailerMock.mock.reset();
+    });
+
+    after(function() {
+        // Remove our mocked nodemailer and disable mockery
+        mockery.deregisterAll();
+        mockery.disable();
+    });
+
+
   it('should return 200 OK', (done) => {
     request(app)
       .get('/contact')
