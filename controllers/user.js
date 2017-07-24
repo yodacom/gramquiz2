@@ -135,29 +135,30 @@ exports.postUpdateProfile = (req, res, next) => {
 
   req.getValidationResult()
     .then(errors => {
-      req.flash('errors', errors);
-      return res.redirect('/account');
-    })
-
-  User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-    user.email = req.body.email || '';
-    user.profile.name = req.body.name || '';
-    user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
-    user.save((err) => {
-      if (err) {
-        if (err.code === 11000) {
-          req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
-          return res.redirect('/account');
+        if(!errors.isEmpty()) {
+            req.flash('errors', errors);
+            return res.redirect('/account');
         }
-        return next(err);
-      }
-      req.flash('success', { msg: 'Profile information has been updated.' });
-      res.redirect('/account');
-    });
-  });
+        User.findById(req.user.id, (err, user) => {
+            if (err) { return next(err); }
+            user.email = req.body.email || '';
+            user.name = req.body.name || '';
+            user.gender = req.body.gender || '';
+            user.location = req.body.location || '';
+            user.website = req.body.website || '';
+            user.save((err) => {
+                if (err) {
+                    if (err.code === 11000) {
+                        req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+                        return res.redirect('/account');
+                    }
+                    return next(err);
+                }
+                req.flash('success', { msg: 'Profile information has been updated.' });
+                res.redirect('/account');
+            });
+        });
+    })
 };
 
 /**
