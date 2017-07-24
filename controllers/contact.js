@@ -59,24 +59,29 @@ exports.postContact = (req, res) => {
 
   req.getValidationResult()
     .then(errors => {
-      req.flash('errors', errors);
-      return res.redirect('/contact');
+      if (!errors.isEmpty()) {
+        req.flash('errors', errors);
+        return res.redirect('/contact');
+      }
+      const mailOptions = {
+        to: 'your@email.com',
+        from: `${req.body.name} <${req.body.email}>`,
+        subject: 'Contact Form | Enneagram Starter',
+        text: req.body.message
+      };
+
+      transporter.sendMail(mailOptions, (err) => {
+        if (err) {
+          req.flash('errors', { msg: err.message });
+          return res.redirect('/contact');
+        }
+        req.flash('success', { msg: 'Email has been sent successfully!' });
+        res.redirect('/contact');
+      });
+
+
     });
 
 
-  const mailOptions = {
-    to: 'your@email.com',
-    from: `${req.body.name} <${req.body.email}>`,
-    subject: 'Contact Form | Enneagram Starter',
-    text: req.body.message
-  };
 
-  transporter.sendMail(mailOptions, (err) => {
-    if (err) {
-      req.flash('errors', { msg: err.message });
-      return res.redirect('/contact');
-    }
-    req.flash('success', { msg: 'Email has been sent successfully!' });
-    res.redirect('/contact');
-  });
 };
