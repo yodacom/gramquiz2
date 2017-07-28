@@ -64,7 +64,7 @@ exports.postContact = (req, res) => {
         return res.redirect('/contact');
       }
       const mailOptions = {
-        to: 'your@email.com',
+        to: 'jb@yodacom.com',
         from: `${req.body.name} <${req.body.email}>`,
         subject: 'Contact Form | Enneagram Starter',
         text: req.body.message
@@ -81,7 +81,4 @@ exports.postContact = (req, res) => {
 
 
     });
-
-
-
 };
