@@ -16,9 +16,10 @@
   }
 }
 
-body{
-  background-color: #34495e;
-}
+// body{
+//   background-color: #34495e;
+// }
+
 header{
   margin-top: 100px;
   h1, h3{
@@ -27,16 +28,19 @@ header{
     color: #95a5a6;
   }
 }
+
 .container{
   width: 50%;
   position: relative;
   margin: 0 auto;
   z-index: 1;
 }
+
 .wrapBox{
     animation-delay: 1s;
     animation-duration: 3s;
 }
+
 .box{
   background-color: #e74c3c;
   width: 100%;
@@ -45,11 +49,13 @@ header{
   box-sizing: border-box;
   overflow: visible;
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+  
   label{
     color: #FFF;
     font-size:1.3em;
     font-family: 'Dosis', sans-serif; 
   }
+  
   input[type="email"]{
     background: transparent;
     border: none;
@@ -133,6 +139,38 @@ header{
 @media only screen
 and (max-width : 1024px) {
   .container{
-    width: 80%;
+    width: 60%;
   }
 }
+
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+@mixin cover-background($img-uri, $background-top:"center", $background-left:"center", $background-attachment:"fixed") {
+  background: url($img-uri) no-repeat unquote($background-top) unquote($background-left) unquote($background-attachment); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
+}
+
+html { 
+	@include cover-background('http://backgroundgraphics.s3.amazonaws.com/felix-plakolb-137007.jpg');
+}
+// @media screen and (max-width: 1024px) { /* Specific to this particular image */
+//   img.bg {
+//     left: 50%;
+//     margin-left: -512px;   /* 50% */
+//   }
+// }
