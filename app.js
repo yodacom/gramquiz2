@@ -234,49 +234,49 @@ app.post(
   passportConfig.isAuthorized,
   apiController.postTwitter
 );
-app.get(
-  "/api/linkedin",
-  passportConfig.isAuthenticated,
-  passportConfig.isAuthorized,
-  apiController.getLinkedin
-);
-app.get(
-  "/api/instagram",
-  passportConfig.isAuthenticated,
-  passportConfig.isAuthorized,
-  apiController.getInstagram
-);
+// app.get(
+//   "/api/linkedin",
+//   passportConfig.isAuthenticated,
+//   passportConfig.isAuthorized,
+//   apiController.getLinkedin
+// );
+// app.get(
+//   "/api/instagram",
+//   passportConfig.isAuthenticated,
+//   passportConfig.isAuthorized,
+//   apiController.getInstagram
+// );
 app.get("/api/paypal", apiController.getPayPal);
 app.get("/api/paypal/success", apiController.getPayPalSuccess);
 app.get("/api/paypal/cancel", apiController.getPayPalCancel);
 app.get("/api/lob", apiController.getLob);
 app.get("/api/upload", apiController.getFileUpload);
 app.post("/api/upload", upload.single("myFile"), apiController.postFileUpload);
-app.get(
-  "/api/pinterest",
-  passportConfig.isAuthenticated,
-  passportConfig.isAuthorized,
-  apiController.getPinterest
-);
-app.post(
-  "/api/pinterest",
-  passportConfig.isAuthenticated,
-  passportConfig.isAuthorized,
-  apiController.postPinterest
-);
+// app.get(
+//   "/api/pinterest",
+//   passportConfig.isAuthenticated,
+//   passportConfig.isAuthorized,
+//   apiController.getPinterest
+// );
+// app.post(
+//   "/api/pinterest",
+//   passportConfig.isAuthenticated,
+//   passportConfig.isAuthorized,
+//   apiController.postPinterest
+// );
 app.get("/api/google-maps", apiController.getGoogleMaps);
 
 /**
  * OAuth authentication routes. (Sign in)
  */
-app.get("/auth/instagram", passport.authenticate("instagram"));
-app.get(
-  "/auth/instagram/callback",
-  passport.authenticate("instagram", { failureRedirect: "/login" }),
-  (req, res) => {
-    res.redirect(req.session.returnTo || "/");
-  }
-);
+// app.get("/auth/instagram", passport.authenticate("instagram"));
+// app.get(
+//   "/auth/instagram/callback",
+//   passport.authenticate("instagram", { failureRedirect: "/login" }),
+//   (req, res) => {
+//     res.redirect(req.session.returnTo || "/");
+//   }
+// );
 app.get(
   "/auth/facebook",
   passport.authenticate("facebook", { scope: ["email", "public_profile"] })
@@ -315,17 +315,17 @@ app.get(
     res.redirect(req.session.returnTo || "/");
   }
 );
-app.get(
-  "/auth/linkedin",
-  passport.authenticate("linkedin", { state: "SOME STATE" })
-);
-app.get(
-  "/auth/linkedin/callback",
-  passport.authenticate("linkedin", { failureRedirect: "/login" }),
-  (req, res) => {
-    res.redirect(req.session.returnTo || "/");
-  }
-);
+// app.get(
+//   "/auth/linkedin",
+//   passport.authenticate("linkedin", { state: "SOME STATE" })
+// );
+// app.get(
+//   "/auth/linkedin/callback",
+//   passport.authenticate("linkedin", { failureRedirect: "/login" }),
+//   (req, res) => {
+//     res.redirect(req.session.returnTo || "/");
+//   }
+// );
 
 /**
  * OAuth authorization routes. (API examples)
@@ -338,33 +338,33 @@ app.get(
 //     res.redirect("/api/foursquare");
 //   }
 // );
-app.get("/auth/tumblr", passport.authorize("tumblr"));
-app.get(
-  "/auth/tumblr/callback",
-  passport.authorize("tumblr", { failureRedirect: "/api" }),
-  (req, res) => {
-    res.redirect("/api/tumblr");
-  }
-);
-app.get("/auth/steam", passport.authorize("openid", { state: "SOME STATE" }));
-app.get(
-  "/auth/steam/callback",
-  passport.authorize("openid", { failureRedirect: "/login" }),
-  (req, res) => {
-    res.redirect(req.session.returnTo || "/");
-  }
-);
-app.get(
-  "/auth/pinterest",
-  passport.authorize("pinterest", { scope: "read_public write_public" })
-);
-app.get(
-  "/auth/pinterest/callback",
-  passport.authorize("pinterest", { failureRedirect: "/login" }),
-  (req, res) => {
-    res.redirect("/api/pinterest");
-  }
-);
+// app.get("/auth/tumblr", passport.authorize("tumblr"));
+// app.get(
+//   "/auth/tumblr/callback",
+//   passport.authorize("tumblr", { failureRedirect: "/api" }),
+//   (req, res) => {
+//     res.redirect("/api/tumblr");
+//   }
+// );
+// app.get("/auth/steam", passport.authorize("openid", { state: "SOME STATE" }));
+// app.get(
+//   "/auth/steam/callback",
+//   passport.authorize("openid", { failureRedirect: "/login" }),
+//   (req, res) => {
+//     res.redirect(req.session.returnTo || "/");
+//   }
+// );
+// app.get(
+//   "/auth/pinterest",
+//   passport.authorize("pinterest", { scope: "read_public write_public" })
+// );
+// app.get(
+//   "/auth/pinterest/callback",
+//   passport.authorize("pinterest", { failureRedirect: "/login" }),
+//   (req, res) => {
+//     res.redirect("/api/pinterest");
+//   }
+// );
 
 /**
  * QUIZ ROUTES ================ 
