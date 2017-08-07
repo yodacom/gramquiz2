@@ -4,7 +4,7 @@
 var quiz;
 
 function displayWordGroup(keywords) {
-    if (keywords.length == 0) {
+    if (keywords.length === 0) {
         $('.wordlist').append('<h3> End of list Press the Analysis button to see your profile </h4>');
         $('#btnNext').off();
         $('#btnNext').click(performAnalysis);
@@ -29,11 +29,11 @@ function moveWord(elem) {
     const word = $(this).text();
     const word_id = $(this).data("id");
     $(this).detach().prependTo('#answerListBox .bestWords');
-    const index = currentWords.findIndex((w) => w.word == word);
+    const index = currentWords.findIndex((w) => w.word === word);
     //person.addWord(currentWords[index]);
     $.ajax({
         method: 'PUT',
-        url: 'http://localhost:3000/quiz/bestword',
+        url: '/quiz/bestword',
         data: {
             word: word,
             id: word_id,
@@ -55,7 +55,7 @@ function removeWord(elem) {
     //person.removeWord(word);
     $.ajax({
         method: 'DELETE',
-        url: 'http://localhost:3000/quiz/bestword',
+        url: '/quiz/bestword',
         data: {
             word: word,
             id: word_id,
@@ -75,7 +75,7 @@ function performAnalysis() {
     //personalityReport();
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:3000/quiz/analysis',
+        url: '/quiz/analysis',
         data: {
             quiz: quiz._id
         }
@@ -113,7 +113,7 @@ $(document).ready(function () {
 
     //load up the array of words
     $.ajax({
-        url: 'http://localhost:3000/quiz/word'
+        url: '/quiz/word'
     })
         .done(function (data) {
             keywords = data;
@@ -122,7 +122,7 @@ $(document).ready(function () {
 
     $.ajax({
         method: 'POST',
-        url: 'http://localhost:3000/quiz'
+        url: '/quiz'
     }).done(function (data) {
         console.log(data);
         quiz = data;
@@ -137,17 +137,17 @@ $(document).ready(function () {
 
     $('#ref_btn').click(refreshPage);
 
-$('#send').click(function (e) {
-    e.preventDefault();
-    $(this).addClass('animated fadeOutRight');
-    $('.box form').addClass('animated fadeOut');
+    $('#send').click(function (e) {
+        e.preventDefault();
+        $(this).addClass('animated fadeOutRight');
+        $('.box form').addClass('animated fadeOut');
 
-    $(this, '.box form').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd  oanimationend animationend', function () {
-      $(this).hide();
-      $('.box form').hide();
-      $('.thanks').show().addClass('animated zoomIn');
-      $('.box').height('auto');
+        $(this, '.box form').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd  oanimationend animationend', function () {
+            $(this).hide();
+            $('.box form').hide();
+            $('.thanks').show().addClass('animated zoomIn');
+            $('.box').height('auto');
+        });
     });
-  });
 
 });

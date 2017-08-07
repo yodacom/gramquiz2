@@ -15,7 +15,7 @@ const person = new Person();
 function moveWord(elem) {
   const word = $(this).text();
   $(this).detach().appendTo('#answerListBox .bestWords');
-  const index = currentWords.findIndex(w => w.word == word);
+  const index = currentWords.findIndex(w => w.word === word);
   person.addWord(currentWords[index]);
   currentWords.splice(index, 1);
 }
@@ -34,7 +34,7 @@ function performAnalysis() {
 }
 
 function displayWordGroup(keywords) {
-  if (keywords.length == 0) {
+  if (keywords.length === 0) {
     $('.wordlist').append('<h3> End of list Press the Analysis button to see your profile </h4>');
     $('#btnNext').off();
     $('#btnNext').click(performAnalysis);
