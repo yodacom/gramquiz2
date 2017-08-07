@@ -1,17 +1,17 @@
 # Enneagram Word Quiz App and Site
 
-[logo]: http://gramquiz.s3.amazonaws.com/gramquiz_logo.png "logo"
+[logo]: https://gramquiz.s3.amazonaws.com/gramquiz_logo.png "logo"
 
-[homepage]: http://gramquiz.s3.amazonaws.com/enneagramQuizHome.png "home page"
+[homepage]: https://gramquiz.s3.amazonaws.com/enneagramQuizHome.png "home page"
 
-[homepageQuiz]:http://gramquiz.s3.amazonaws.com/enneagramQuizHome2.png "home page with quiz"
+[homepageQuiz]:https://gramquiz.s3.amazonaws.com/enneagramQuizHome2.png "home page with quiz"
 
-[logIn]: http://gramquiz.s3.amazonaws.com/enneagramQuizLogIn.png "Login"
+[logIn]: https://gramquiz.s3.amazonaws.com/enneagramQuizLogIn.png "Login"
 
-<img src="http://gramquiz.s3.amazonaws.com/gramquiz_logo.png" width="100" height="100" />
-<img src="http://gramquiz.s3.amazonaws.com/enneagramQuizHome.png"/>
-<img src="http://gramquiz.s3.amazonaws.com/enneagramQuizTest.png" />
-<img src="http://gramquiz.s3.amazonaws.com/enneagramQuizLogIn.png" />
+<img src="https://gramquiz.s3.amazonaws.com/gramquiz_logo.png" width="100" height="100" />
+<img src="https://gramquiz.s3.amazonaws.com/enneagramQuizHome.png"/>
+<img src="https://gramquiz.s3.amazonaws.com/enneagramQuizTest.png" />
+<img src="https://gramquiz.s3.amazonaws.com/enneagramQuizLogIn.png" />
 
 
 

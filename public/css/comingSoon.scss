@@ -166,7 +166,7 @@ img.bg {
 }
 
 html { 
-	@include cover-background('http://backgroundgraphics.s3.amazonaws.com/felix-plakolb-137007.jpg');
+	@include cover-background('https://backgroundgraphics.s3.amazonaws.com/felix-plakolb-137007.jpg');
 }
 // @media screen and (max-width: 1024px) { /* Specific to this particular image */
 //   img.bg {
