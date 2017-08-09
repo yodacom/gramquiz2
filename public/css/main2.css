@@ -26,7 +26,7 @@ body {
   
 }
 
-main {
+/* main {
   margin: 0 auto;
   padding-top: 10px;
   max-width: 640px;
@@ -35,7 +35,7 @@ main {
   display:flex;
   flex-basis: 600px;
   flex-direction: column;
-}
+} */
 
 .hr2{
 	  border-top: 3px double #8c8b8b;
@@ -171,6 +171,7 @@ main {
 
 .button-container p {
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 a { text-decoration: none;
