@@ -67,6 +67,7 @@ passport.use(new FacebookStrategy({
   profileFields: ['name', 'email', 'link', 'locale', 'timezone'],
   passReqToCallback: true
 }, (req, accessToken, refreshToken, profile, done) => {
+
   if (req.user) {
     User.findOne({ facebook: profile.id }, (err, existingUser) => {
       if (err) { return done(err); }
@@ -77,10 +78,8 @@ passport.use(new FacebookStrategy({
         User.findById(req.user.id, (err, user) => {
           if (err) { return done(err); }
           user.facebook = profile.id;
-          user.tokens.push({ kind: 'facebook', accessToken });
-          user.profile.name = user.profile.name || `${profile.name.givenName} ${profile.name.familyName}`;
-          user.profile.gender = user.profile.gender || profile._json.gender;
-          user.profile.picture = user.profile.picture || `https://graph.facebook.com/${profile.id}/picture?type=large`;
+          user.name = user.profile.name || `${profile._json.first_name} ${profile._json.last_name}`;
+          user.picture = user.picture || `https://graph.facebook.com/${profile.id}/picture?type=large`;
           user.save((err) => {
             req.flash('info', { msg: 'Facebook account has been linked.' });
             done(err, user);
@@ -103,11 +102,8 @@ passport.use(new FacebookStrategy({
           const user = new User();
           user.email = profile._json.email;
           user.facebook = profile.id;
-          user.tokens.push({ kind: 'facebook', accessToken });
-          user.profile.name = `${profile.name.givenName} ${profile.name.familyName}`;
-          user.profile.gender = profile._json.gender;
-          user.profile.picture = `https://graph.facebook.com/${profile.id}/picture?type=large`;
-          user.profile.location = (profile._json.location) ? profile._json.location.name : '';
+          user.name = `${profile._json.first_name} ${profile._json.last_name}`;
+          user.picture = `https://graph.facebook.com/${profile.id}/picture?type=large`;
           user.save((err) => {
             done(err, user);
           });
