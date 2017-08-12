@@ -1,27 +1,18 @@
-- extends ./quiz/layout2
+extends ./quiz/layout2
+block styles
+            link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css')
+            link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/css?family=Architects+Daughter')
+            link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/css?family=Dosis')
+            link(rel='stylesheet prefetch', href='https://max.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+            link(rel='stylesheet', href='css/comingSoon.css')
 
-html
-  head
-    meta(charset='UTF-8')
-    |   
-    title Coming soon [flat design]
-    |   
-    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css')
-    |   
-    link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/css?family=Architects+Daughter')
-    |   
-    link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/css?family=Dosis')
-    |   
-    link(rel='stylesheet prefetch', href='https://max.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
-    |   
-    link(rel='stylesheet', href='css/style.css')
-  body
+block content
     header
       h1 { coolness is on it&apos;s way ... }
       |     
       h3 If you leave us your address we will let you know when it is ready
     |   
-    section.container
+    section
       .wrapBox.animated.rollIn
         .box
           .thanks

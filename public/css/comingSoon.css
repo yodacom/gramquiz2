@@ -1,18 +1,9 @@
-body {
-  background-color: #34495e; }
-
 header {
   margin-top: 10px; }
   header h1, header h3 {
     text-align: center;
     font-family: 'Architects Daughter', cursive;
     color: #95a5a6; }
-
-.container {
-  width: 50%;
-  position: relative;
-  margin: 0 auto;
-  z-index: 1; }
 
 .wrapBox {
   animation-delay: 1s;
@@ -47,7 +38,7 @@ header {
     /*border-bottom: solid 3px #FFF; */ }
   .box button[type="submit"] {
     margin: 30px auto;
-    text-algin: center;
+    text-align: center;
     border: none;
     background: transparent;
     border: solid 3px #FFF;
@@ -92,12 +83,27 @@ header {
   .thanks p {
     font-size: 4em;
     color: #FFF;
-    text-algin: center;
+    text-align: center;
     margin: 0 auto;
     font-family: 'Architects Daughter', cursive; }
 
 /* Responsive */
 /* Desktops and laptops ----------- */
-@media only screen and (max-width: 1024px) {
-  .container {
-    width: 80%; } }
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0; }
+
+html {
+  background: url("https://backgroundgraphics.s3.amazonaws.com/felix-plakolb-137007.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }

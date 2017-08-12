@@ -12,13 +12,13 @@ block content
         |         When finished selecting words that are you then press the "ANALYSIS" button.
     main
       .row.words
-        section.contentBox
+        section.contentBox.col-sm-6
           #chooseWordBox.chooseWordBox
             .boxTopLabel
               | Choose word by clicking on the words that best describe you
             hr.hr2
             .wordlist
-        section.contentBox
+        section.contentBox.col-sm-6
           #answerListBox.answerListBox
             .boxTopLabel
               | List of words that "best" describe me
@@ -26,7 +26,7 @@ block content
             hr.hr2
             .bestWords
       .row.actions
-        section.button-container
+        section.button-container.col-sm-12
           p
             a#btnNext.btn.btn-red(href='#') NEXT
       .row.reports
@@ -35,9 +35,10 @@ block content
           section.button-container
             p
               a#ref_btn.btn.btn-red.refreshBtn(href='#') Retake Quiz
-    footer.footer
+
+block footer
+  footer.footer
       a(href='http://aktheos.com') Find out more about your typology here
-      br
       //- small © Copyright 2016-2017 by YodaCom LLC. All Rights Reserved.
 
 block scripts

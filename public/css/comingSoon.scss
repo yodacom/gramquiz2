@@ -29,13 +29,6 @@ header{
   }
 }
 
-.container{
-  width: 50%;
-  position: relative;
-  margin: 0 auto;
-  z-index: 1;
-}
-
 .wrapBox{
     animation-delay: 1s;
     animation-duration: 3s;
@@ -138,9 +131,6 @@ header{
 /* Desktops and laptops ----------- */
 @media only screen
 and (max-width : 1024px) {
-  .container{
-    width: 60%;
-  }
 }
 
 img.bg {
