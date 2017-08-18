@@ -177,7 +177,7 @@ passport.use(new FacebookStrategy({
 passport.use(new TwitterStrategy({
   consumerKey: process.env.TWITTER_KEY,
   consumerSecret: process.env.TWITTER_SECRET,
-  callbackURL: '/auth/twitter/callback',
+  callbackURL: 'http://127.0.0.1:3000/auth/twitter/callback',
   passReqToCallback: true
 }, (req, accessToken, tokenSecret, profile, done) => {
   if (req.user) {
@@ -191,9 +191,9 @@ passport.use(new TwitterStrategy({
           if (err) { return done(err); }
           user.twitter = profile.id;
           user.tokens.push({ kind: 'twitter', accessToken, tokenSecret });
-          user.profile.name = user.profile.name || profile.displayName;
-          user.profile.location = user.profile.location || profile._json.location;
-          user.profile.picture = user.profile.picture || profile._json.profile_image_url_https;
+          user.name = user.name || profile.displayName;
+          user.location = user.location || profile._json.location;
+          user.picture = user.picture || profile._json.profile_image_url_https;
           user.save((err) => {
             if (err) { return done(err); }
             req.flash('info', { msg: 'Twitter account has been linked.' });
@@ -215,9 +215,9 @@ passport.use(new TwitterStrategy({
       user.email = `${profile.username}@twitter.com`;
       user.twitter = profile.id;
       user.tokens.push({ kind: 'twitter', accessToken, tokenSecret });
-      user.profile.name = profile.displayName;
-      user.profile.location = profile._json.location;
-      user.profile.picture = profile._json.profile_image_url_https;
+      user.name = profile.displayName;
+      user.location = profile._json.location;
+      user.picture = profile._json.profile_image_url_https;
       user.save((err) => {
         done(err, user);
       });
@@ -245,9 +245,9 @@ passport.use(new GoogleStrategy({
           if (err) { return done(err); }
           user.google = profile.id;
           user.tokens.push({ kind: 'google', accessToken });
-          user.profile.name = user.profile.name || profile.displayName;
-          user.profile.gender = user.profile.gender || profile._json.gender;
-          user.profile.picture = user.profile.picture || profile._json.image.url;
+          user.name = user.name || profile.displayName;
+          user.gender = user.gender || profile._json.gender;
+          user.picture = user.picture || profile._json.image.url;
           user.save((err) => {
             req.flash('info', { msg: 'Google account has been linked.' });
             done(err, user);
@@ -271,9 +271,9 @@ passport.use(new GoogleStrategy({
           user.email = profile.emails[0].value;
           user.google = profile.id;
           user.tokens.push({ kind: 'google', accessToken });
-          user.profile.name = profile.displayName;
-          user.profile.gender = profile._json.gender;
-          user.profile.picture = profile._json.image.url;
+          user.name = profile.displayName;
+          user.gender = profile._json.gender;
+          user.picture = profile._json.image.url;
           user.save((err) => {
             done(err, user);
           });
