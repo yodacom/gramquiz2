@@ -298,7 +298,7 @@ app.get(
 );
 app.get(
   "/auth/google",
-  passport.authenticate("google", { scope: "profile email" })
+  passport.authenticate("google", { scope: ["https://google.apis.com/auth/userinfo.profile", "https://google.apis.com/auth/userinfo.email"]})
 );
 app.get(
   "/auth/google/callback",
@@ -367,7 +367,7 @@ app.get(
 // );
 
 /**
- * QUIZ ROUTES ================ 
+ * QUIZ ROUTES ================
  */
 
 app.get("/quiz/word", wordController.getWords);
