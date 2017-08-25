@@ -298,7 +298,7 @@ app.get(
 );
 app.get(
   "/auth/google",
-  passport.authenticate("google", { scope: ["https://google.apis.com/auth/userinfo.profile", "https://google.apis.com/auth/userinfo.email"]})
+  passport.authenticate("google", { scope: ["profile", "email"]})
 );
 app.get(
   "/auth/google/callback",
