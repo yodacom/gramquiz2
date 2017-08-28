@@ -3,10 +3,12 @@ extends layout2
 block content
   h1 Enneagram Word Quiz
   header
-    .headerBox   
+    .headerBox
       p
-        | Choose and click on words that 
-        span.emphasis best 
+        | Choose and click on words that
+        =' '
+        span.emphasis best
+        =' '
         | describes you over time, not just right now,
         |         but most of the time. Words that you don't choose are words that would NOT best describe "you" most of the time.
         |         When finished selecting words that are you then press the "ANALYSIS" button.
@@ -15,14 +17,13 @@ block content
         section.contentBox.col-sm-6
           #chooseWordBox.chooseWordBox
             .boxTopLabel
-              | Choose word by clicking on the words that best describe you
+              | Click on the words that "BEST" describe you
             hr.hr2
             .wordlist
         section.contentBox.col-sm-6
           #answerListBox.answerListBox
             .boxTopLabel
-              | List of words that "best" describe me
-            br
+              | Words that "best" describe me
             hr.hr2
             .bestWords
       .row.actions
