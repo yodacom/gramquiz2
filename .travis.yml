@@ -13,5 +13,9 @@ deploy:
   api_key:
     secure: qiPz7rmPHXg8gCl1AikxecaKv1/1FmKWhxV/k5B6iL62kjrtkRP1GwWjdNH9P8/Sm1IMyXeQM0a21iNNkjB2JlqjzZ/ZMs39Kx8WePVHG1zEfh7Lq5OAH13ncISHhoXKfUMQlj9tZda5azNbZQTe9R7eIDgceeqZt4lrHhgb5a4YxAewZyIpnXFYcdTaLtSQC2Ya5H516kF43vvJ2f0q59tD950CKwX/anpqSZBpCfs2uksjHOO1JqlAWtP28HKVgGT8sWBbSlB4wYU5B8i5+hvCH+Vw4rcfw4cb9EDtMJhOvL1qThC6SeedpcKySxo4et291r+UrKZUzoTgsPcUVzJ8RwYlVL2VRYaUrmrQsJ16o+37ypm6cN8/ZlWLC9WDy4qIAWNB5fmrh8D0w/7gEEBOKEpCfPIkyp/3zTceElHF5aAwmT3Qly3GuW2KOOmchdVq89vVHqIEZM4HrZgPFubmFgRylhU1oAcN6YHVyFWebLaZpsrW9qnnNM1qXaKYRJhQsyCCwDRTX33Fc1zCOMBN0utr+J4LYMuWNZLi18c6Civ2eWcfqUUqnWhhgLWkU0VNVVNtAxRxzPGUzqEdFTWUWs9vb0bJ274+I+oT3uPzPrSQYR9qdGjzrJ3H/UgkrNoLjSMTc5uW/kv2q1bYVlCSs+M0iptVHSEmHoRr1VU=
   app: gram-quiz
+
   on:
     repo: yodacom/gramquiz2
+branches:
+  only:
+    - heroku
