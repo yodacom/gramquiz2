@@ -16,6 +16,7 @@ deploy:
 
   on:
     repo: yodacom/gramquiz2
+    branch: heroku
 branches:
   only:
     - heroku
