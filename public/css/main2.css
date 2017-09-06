@@ -118,6 +118,26 @@ html {
 
 }
 
+.nextBtn {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    .nextBtn{
+        display: block;
+        text-align:center;
+    }
+
+    .button-container {
+        display: none;
+    }
+
+    .headerBox {
+        margin: 5px;
+        padding: 2px;
+    }
+}
+
 .emphasis {
   font-weight: bolder;
   text-decoration: underline;
