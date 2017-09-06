@@ -6,9 +6,9 @@ var quiz;
 function displayWordGroup(keywords) {
     if (keywords.length === 0) {
         $('.wordlist').append('<h3> End of list Press the Analysis button to see your profile </h4>');
-        $('#btnNext').off();
-        $('#btnNext').click(performAnalysis);
-        $('#btnNext').text('Analysis');
+        $('.btnNext').off();
+        $('.btnNext').click(performAnalysis);
+        $('.btnNext').text('Analysis');
     } else {
         currentWords = [];
         $('.wordlist').empty();
@@ -130,7 +130,7 @@ $(document).ready(function () {
 
     $('#chooseWordBox').on('click', '.word', moveWord);
     $('#answerListBox').on('click', '.word', removeWord);
-    $('#btnNext').click((e) => {
+    $('.btnNext').click((e) => {
         e.preventDefault();
         displayWordGroup(keywords);
     });
