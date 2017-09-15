@@ -4,7 +4,7 @@
  */
 
 exports.index = (req, res) => {
-  res.render('Faq', {
-    title: 'Faq'
+  res.render('faq', {
+    title: 'faq'
   });
 };

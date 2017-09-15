@@ -41,7 +41,7 @@ const quizAnalysis = require("./controllers/quizAnalysis");
 const reportController = require("./controllers/report");
 const comingSoon = require("./controllers/comingSoon");
 const profilesOverview = require("./controllers/profilesOverview");
-const Faq= require(".controllers/Faq");
+const faq = require("./controllers/faq");
 
 /**
  * API keys and Passport configuration.
@@ -393,7 +393,7 @@ app.get(
 );
 app.get("/comingSoon", comingSoon.index);
 app.get("/profilesOverview", profilesOverview.index);
-app.get('/Faq', Faq.index);
+app.get("/faq", faq.index);
 
 /**
  *  End QUIZ ROUTES ===============
