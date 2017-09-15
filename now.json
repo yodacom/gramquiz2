@@ -1,0 +1,30 @@
+{
+  "env": {
+
+    "MONGOLAB_URI":"mongodb://jbyodacom:BadAss1975@ds163721.mlab.com:63721/gram_quiz",
+
+    "SESSION_SECRET":"BadAss1975",
+
+    "FACEBOOK_ID":"1469779019795998",
+
+    "FACEBOOK_SECRET":"63ba12aa904e5c1eb259e04755e9e28c",
+
+    "TWITTER_KEY":"7f37K3JbXR500Q7d95LEiKSVC",
+    "TWITTER_SECRET":"8vyYcy4f0CzGAZ1TzvYsSe4wqbFaGCwTRl11YJ53FeG6dJz62F",
+
+    "GOOGLE_ID":"999793007027-tv4ragvpata3ddrk2eh2kj389k4p4p72.apps.googleusercontent.com",
+    "GOOGLE_SECRET":"UgCq6kG3LzwGWFEluTcb4j1r",
+
+    "GITHUB_ID":"cb448b1d4f0c743a1e36",
+    "GITHUB_SECRET":"815aa4606f476444691c5f1c16b9c70da6714dc6",
+
+    "MAILGUN_USER":"postmaster@sandbox697fcddc09814c6b83718b9fd5d4e5dc.mailgun.org",
+    "MAILGUN_PASSWORD":"29eldds1uri6",
+
+    "SENDGRID_USER":"jbyodacom",
+    "SENDGRID_PASSWORD":"BadAss1975",
+    "SENDGRID_API_KEY":"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",
+
+    "SENDINBLUE_API_KEY":"jvRcaSqVrY0CmwA11"
+  }
+}
