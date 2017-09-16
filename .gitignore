@@ -19,7 +19,9 @@ public/css/main.css
 # API keys and secrets
 *.env
 sendgrid.env
+*.sendgrid.env
 .env.example
+*.env.example
 now.json
 
 # Dependency directory
