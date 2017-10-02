@@ -99,6 +99,7 @@ app.use(
     resave: true,
     saveUninitialized: true,
     secret: process.env.SESSION_SECRET,
+    domain:'.gramquiz.com',
     store: new MongoStore({
       url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
       autoReconnect: true,
