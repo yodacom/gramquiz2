@@ -19,6 +19,7 @@ const expressValidator = require("express-validator");
 const expressStatusMonitor = require("express-status-monitor");
 const sass = require("node-sass-middleware");
 const multer = require("multer");
+const cookieSession = require("cookie-session");
 
 // const upload = multer({ dest: path.join(__dirname, "uploads") });
 
@@ -95,17 +96,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 app.use(
-  session({
-    resave: true,
-    saveUninitialized: true,
-    secret: process.env.SESSION_SECRET,
-    domain:'.gramquiz.com',
-    store: new MongoStore({
-      url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
-      autoReconnect: true,
-      clear_interval: 3600
-    })
+  cookieSession({
+    name: "session",
+    keys: [process.env.SESSION_SECRET],
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    domain: ".gramquiz.com"
   })
+
+  // THIS IS PREFERRED WAY USING SERVER SIDE SESSION NOT COOKIES
+  // session({
+  //   resave: true,
+  //   saveUninitialized: true,
+  //   secret: process.env.SESSION_SECRET,
+  //   domain:'.gramquiz.com',
+  //   store: new MongoStore({
+  //     url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
+  //     autoReconnect: true,
+  //     clear_interval: 3600
+  //   })
+  // })
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -300,7 +309,7 @@ app.get(
 );
 app.get(
   "/auth/google",
-  passport.authenticate("google", { scope: ["profile", "email"]})
+  passport.authenticate("google", { scope: ["profile", "email"] })
 );
 app.get(
   "/auth/google/callback",
@@ -375,23 +384,13 @@ app.get(
 app.get("/quiz/word", wordController.getWords);
 app.post("/quiz/word", wordController.postWord);
 app.put("/quiz/word", wordController.updateWord);
-app.get(
-  "/quiz",
-  passportConfig.isAuthenticated,
-  quizController.getQuiz);
+app.get("/quiz", passportConfig.isAuthenticated, quizController.getQuiz);
 app.put("/quiz/bestword", quizController.addBestWord);
 // app.get("/quiz/bestword", quizController.getBestWord);
 app.delete("/quiz/bestword", removeBestWord.removeBestWord);
-app.post(
-  "/quiz",
-  passportConfig.isAuthenticated,
-  quizController.createQuiz);
+app.post("/quiz", passportConfig.isAuthenticated, quizController.createQuiz);
 app.get("/quiz/analysis", quizAnalysis.performAnalysis);
-app.get(
-  "/report",
-  passportConfig.isAuthenticated,
-  reportController.getReport
-);
+app.get("/report", passportConfig.isAuthenticated, reportController.getReport);
 app.get("/comingSoon", comingSoon.index);
 app.get("/profilesOverview", profilesOverview.index);
 app.get("/faq", faq.index);
