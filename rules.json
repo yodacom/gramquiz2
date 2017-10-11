@@ -1,6 +1,6 @@
 {
   "rules": [
-    { "pathname": "/forum", "dest": "reforum-cxhvfdcfxj.now.sh" },
+    { "pathname": "/forum", "dest": "reforum.gramquiz.com" },
     { "dest": "gramquiz.com" }
   ]
 }
